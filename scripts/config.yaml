@@ -1,0 +1,57 @@
+# 不動産物件自動検索 設定ファイル
+
+# 検索対象エリア
+areas:
+  rakumachi:
+    # 楽待のエリアコード
+    - code: 11
+      name: "埼玉県"
+    - code: 12
+      name: "千葉県"
+    - code: 13
+      name: "東京都"
+    - code: 14
+      name: "神奈川県"
+  kenbiya:
+    # 健美家のエリアパス
+    - path: "s/tokyo"
+      name: "東京都"
+    - path: "s/kanagawa"
+      name: "神奈川県"
+    - path: "s/saitama"
+      name: "埼玉県"
+    - path: "s/chiba"
+      name: "千葉県"
+
+# フィルタ条件
+filters:
+  structure:
+    - "RC"
+    - "SRC"
+    - "鉄筋コンクリート"
+    - "鉄骨鉄筋コンクリート"
+  max_building_age_years: 15
+  property_types:
+    - "区分マンション"
+    - "一棟マンション"
+  newly_listed: true  # 新着のみ（24時間以内）
+
+# 出力設定
+output:
+  report_dir: "docs"
+  report_prefix: "daily_property_report"
+  date_format: "%Y%m%d"
+
+# GitHub Issue設定
+issue:
+  labels:
+    - "daily-report"
+    - "auto-generated"
+  assignees: []
+
+# スクレイピング設定
+scraping:
+  request_delay_seconds: 2
+  max_retries: 3
+  timeout_seconds: 30
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"

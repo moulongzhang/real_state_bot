@@ -1,0 +1,181 @@
+{
+  "analysis_date": "2025-07-14",
+  "title": "RC造物件 築年数別投資効率比較分析",
+  "properties": [
+    {
+      "name": "足立区江北 (新築)",
+      "age": 0,
+      "price_yen": 145000000,
+      "gross_yield": 0.0475,
+      "depreciation": {
+        "remaining_useful_life": 47,
+        "annual_depreciation": 2159574,
+        "dep_rate_pct": 1.49
+      },
+      "loan": {
+        "rate_pct": 1.7000000000000002,
+        "term_years": 35,
+        "ltv_pct": 90.0,
+        "equity": 14500000,
+        "annual_payment": 4949742
+      },
+      "repair_20yr": {
+        "total": 17400000,
+        "ratio_pct": 12.0
+      },
+      "exit_20yr": {
+        "age_at_exit": 20,
+        "est_sale_price": 123250000,
+        "sale_profit": 57755110,
+        "liquidity_score": 5
+      },
+      "total_return_20yr": {
+        "total_return": 72369228,
+        "total_roi_pct": 499.1,
+        "annual_roi_pct": 25.0
+      },
+      "composite_score": 80.0,
+      "rank": 2
+    },
+    {
+      "name": "札幌中央区 (築2年)",
+      "age": 2,
+      "price_yen": 185000000,
+      "gross_yield": 0.06,
+      "depreciation": {
+        "remaining_useful_life": 45,
+        "annual_depreciation": 2672222,
+        "dep_rate_pct": 1.44
+      },
+      "loan": {
+        "rate_pct": 1.7999999999999998,
+        "term_years": 34,
+        "ltv_pct": 85.0,
+        "equity": 27750000,
+        "annual_payment": 6187074
+      },
+      "repair_20yr": {
+        "total": 22200000,
+        "ratio_pct": 12.0
+      },
+      "exit_20yr": {
+        "age_at_exit": 22,
+        "est_sale_price": 144300000,
+        "sale_profit": 67783597,
+        "liquidity_score": 4
+      },
+      "total_return_20yr": {
+        "total_return": 117428227,
+        "total_roi_pct": 423.2,
+        "annual_roi_pct": 21.2
+      },
+      "composite_score": 81.1,
+      "rank": 1
+    },
+    {
+      "name": "札幌豊平区 (築11年)",
+      "age": 11,
+      "price_yen": 143500000,
+      "gross_yield": 0.0679,
+      "depreciation": {
+        "remaining_useful_life": 38,
+        "annual_depreciation": 2076974,
+        "dep_rate_pct": 1.45
+      },
+      "loan": {
+        "rate_pct": 2.1999999999999997,
+        "term_years": 30,
+        "ltv_pct": 80.0,
+        "equity": 28700000,
+        "annual_payment": 5230759
+      },
+      "repair_20yr": {
+        "total": 22960000,
+        "ratio_pct": 16.0
+      },
+      "exit_20yr": {
+        "age_at_exit": 31,
+        "est_sale_price": 86100000,
+        "sale_profit": 39184958,
+        "liquidity_score": 2.5
+      },
+      "total_return_20yr": {
+        "total_return": 71129732,
+        "total_roi_pct": 247.8,
+        "annual_roi_pct": 12.4
+      },
+      "composite_score": 38.7,
+      "rank": 3
+    },
+    {
+      "name": "名古屋南区 (築15年)",
+      "age": 15,
+      "price_yen": 179800000,
+      "gross_yield": 0.0636,
+      "depreciation": {
+        "remaining_useful_life": 35,
+        "annual_depreciation": 2568571,
+        "dep_rate_pct": 1.43
+      },
+      "loan": {
+        "rate_pct": 2.5,
+        "term_years": 27,
+        "ltv_pct": 80.0,
+        "equity": 35960000,
+        "annual_payment": 7331505
+      },
+      "repair_20yr": {
+        "total": 21576000,
+        "ratio_pct": 12.0
+      },
+      "exit_20yr": {
+        "age_at_exit": 35,
+        "est_sale_price": 98890000,
+        "sale_profit": 51853955,
+        "liquidity_score": 2.5
+      },
+      "total_return_20yr": {
+        "total_return": 67562180,
+        "total_roi_pct": 187.9,
+        "annual_roi_pct": 9.4
+      },
+      "composite_score": 29.2,
+      "rank": 4
+    },
+    {
+      "name": "春日井市 (築17年/修繕済)",
+      "age": 17,
+      "price_yen": 115000000,
+      "gross_yield": 0.0687,
+      "depreciation": {
+        "remaining_useful_life": 33,
+        "annual_depreciation": 1568182,
+        "dep_rate_pct": 1.36
+      },
+      "loan": {
+        "rate_pct": 2.5,
+        "term_years": 25,
+        "ltv_pct": 80.0,
+        "equity": 23000000,
+        "annual_payment": 4952729
+      },
+      "repair_20yr": {
+        "total": 13800000,
+        "ratio_pct": 12.0
+      },
+      "exit_20yr": {
+        "age_at_exit": 37,
+        "est_sale_price": 57500000,
+        "sale_profit": 34244296,
+        "liquidity_score": 2
+      },
+      "total_return_20yr": {
+        "total_return": 48523132,
+        "total_roi_pct": 211.0,
+        "annual_roi_pct": 10.5
+      },
+      "composite_score": 17.5,
+      "rank": 5
+    }
+  ]
+}

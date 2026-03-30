@@ -1,0 +1,383 @@
+{
+  "report_title": "福岡市 天神・博多エリア 不動産投資分析レポート 2025年版",
+  "report_date": "2025年",
+  "analyst": "不動産投資専門アナリスト",
+
+  "0_executive_summary": {
+    "investment_rating": "A（強い買い推奨）",
+    "score": 88,
+    "one_line": "二大再開発×人口増×IT集積＝地方都市最強の投資環境。ただしオフィス供給過剰の短期調整に注意",
+    "key_metrics": {
+      "population_2025": "約164万人（前年比+3.8%）",
+      "young_ratio_20_39": "13.7%（全国平均10.3%を大幅上回る）",
+      "rental_vacancy_rate": "約1.6%（主要都市中最低水準）",
+      "commercial_land_price_yoy": "+11.4%（中央区商業地）",
+      "residential_land_price_yoy": "+7〜11%（赤坂・薬院・平尾）",
+      "office_vacancy_rate": "4〜4.5%（Aグレード）"
+    }
+  },
+
+  "1_tenjin_big_bang": {
+    "title": "天神ビッグバン 最新進捗",
+    "start_year": 2015,
+    "incentive_deadline": "2026年末",
+    "progress_2025_03": {
+      "building_permits": 93,
+      "completed_buildings": 74,
+      "status": "竣工ラッシュ継続中"
+    },
+    "major_projects": [
+      {
+        "name": "福岡大名ガーデンシティ",
+        "feature": "ザ・リッツ・カールトン福岡を核とする複合施設",
+        "status": "竣工済"
+      },
+      {
+        "name": "ONE FUKUOKA BLDG.",
+        "feature": "西鉄本社＋商業施設の複合ビル",
+        "status": "竣工済"
+      },
+      {
+        "name": "天神ブリッククロス",
+        "feature": "商業・オフィス複合",
+        "status": "竣工済"
+      },
+      {
+        "name": "天神ビジネスセンターⅡ",
+        "feature": "大規模オフィスビル",
+        "status": "2026年竣工予定"
+      },
+      {
+        "name": "（仮称）天神1-7計画",
+        "feature": "天神エリア中核再開発",
+        "status": "2026年竣工予定"
+      }
+    ],
+    "price_impact": {
+      "commercial_land_chuo_ku_yoy": "+11.4%",
+      "top_land_price_per_sqm_万円": 1210,
+      "location": "天神1丁目",
+      "tenant_rent_trend": "飲食・アパレル賃料も上昇傾向"
+    },
+    "assessment": "2026年末まで特例措置が続き、都心の資産価値を構造的に押し上げ。グレードの高いオフィス床が大量供給され、エリアのブランド力が飛躍的に向上"
+  },
+
+  "2_hakata_connected": {
+    "title": "博多コネクティッド 最新進捗",
+    "start_year": 2019,
+    "bonus_deadline": "2028年末",
+    "progress_2025": {
+      "building_permits": 32,
+      "completed_buildings": 26,
+      "status": "着実に進行中"
+    },
+    "major_projects": [
+      {
+        "name": "コネクトスクエア博多",
+        "status": "2024年3月竣工"
+      },
+      {
+        "name": "中央日土地博多駅前ビル",
+        "status": "2025年6月竣工"
+      }
+    ],
+    "key_features": [
+      "容積率緩和のインセンティブ制度",
+      "歩行者空間の拡大・駅前広場の再整備",
+      "官民連携の賑わいづくり"
+    ],
+    "risk_event": {
+      "name": "博多駅空中都市プロジェクト（JR九州）中止",
+      "year": 2025,
+      "reason": "建設費高騰・採算難・オフィス需要の不安定化",
+      "impact": "供給過剰への警戒感を示唆する象徴的事象"
+    },
+    "assessment": "インフラ・歩行者空間整備で都市機能が高度化。ただしJR九州案件中止は市場への警鐘"
+  },
+
+  "3_population_demographics": {
+    "title": "人口動態・転入超過分析",
+    "population_2025": 1608140,
+    "population_growth_since_1980": "約52万人増",
+    "yoy_increase": "+約59,000人（+3.8%）",
+    "age_structure": {
+      "young_20_39_population": 214520,
+      "young_20_39_ratio_pct": 13.7,
+      "national_avg_pct": 10.3,
+      "working_age_15_64_ratio_pct": 65,
+      "dependency_ratio": "高齢者1人あたり2.9人が支える構造（全国は2.1人）"
+    },
+    "migration_2025": {
+      "fukuoka_prefecture_net_domestic_inflow": 5136,
+      "ranking_domestic": "都道府県別第6位",
+      "foreign_inflow": 17782,
+      "total_social_increase": "2万人超（全国7位）",
+      "characteristics": "20〜30代若年層の流入が顕著、留学生・新卒社会人が中心"
+    },
+    "investment_implication": "全国トップクラスの若年人口比率＝賃貸需要の安定基盤。単身向け1K・1LDKの需要が特に厚い"
+  },
+
+  "4_rental_market": {
+    "title": "賃貸市場分析",
+    "vacancy_rate_2024": "1.6%（J-REIT保有物件ベース）",
+    "occupancy_rate_2024": "98.4%",
+    "vacancy_level": "主要都市中最低水準",
+    "rent_trend": {
+      "recent_3yr_increase_pct": "12%以上",
+      "trend": "新築・築浅物件を中心に上昇傾向が顕著",
+      "outlook": "人口増＋再開発を背景に緩やかな上昇基調が継続見込み"
+    },
+    "supply_demand_balance": {
+      "demand_driver": "人口転入超過・コロナ後の都市回帰",
+      "supply_constraint": "建設コスト高騰により大幅な供給増は見込みにくい",
+      "forecast": "2025〜2026年はやや供給増もあるが、2027年以降は再びタイト化"
+    },
+    "investment_implication": "空室率1%台＝入居者確保リスクが極めて低い。インカムゲインの安定性は都心5区を上回る"
+  },
+
+  "5_it_startup_ecosystem": {
+    "title": "IT・スタートアップ企業進出の影響",
+    "startup_city_declaration": "2012年〜",
+    "global_hub_designation": "2020年（国内唯一の国指定グローバル拠点都市）",
+    "opening_rate": "政令市中5年連続1位",
+    "support_infrastructure": [
+      "Fukuoka Growth Next（官民連携インキュベーション）",
+      "CIC Fukuoka（グローバルイノベーション拠点）",
+      "スタートアップビザ制度",
+      "各種補助金・税制優遇"
+    ],
+    "office_market": {
+      "a_grade_vacancy_rate_pct": "4〜4.5",
+      "avg_rent_per_tsubo_yen": "15,000〜20,000",
+      "vs_tokyo_core5": "東京主要5区比で3割以上安価",
+      "demand_trend": "IT・スタートアップの拡張・立地改善移転が活発"
+    },
+    "tsmc_effect": "半導体メーカーTSMCの経済波及効果で高度人材・高収入層の流入が加速",
+    "investment_implication": "IT企業進出→高収入単身者・DINKS増→都心1K〜1LDKの賃料上昇圧力。職住近接ニーズで天神・博多駅徒歩圏の需要が特に強い"
+  },
+
+  "6_nanakuma_line_extension": {
+    "title": "七隈線延伸効果分析",
+    "opening_date": "2023年3月（博多駅延伸）",
+    "land_price_impact_2025": {
+      "nanakuma_line_avg_yoy_pct": "+9.17%",
+      "nanakuma_line_avg_tsubo_万円": 233,
+      "hakata_station_tsubo_万円": 787,
+      "hakata_station_yoy_pct": "+10.18%",
+      "hakata_ku_avg_yoy_pct": "+10.21%"
+    },
+    "effects": [
+      "博多駅周辺の地価が急上昇（坪787万円、前年比+10%超）",
+      "沿線エリアの職住近接評価が上昇",
+      "賃貸成約家賃が新築時比105%に達するケースも",
+      "沿線の稼働率が高水準を維持",
+      "新たな通勤圏が誕生し住宅・賃貸需要が拡大"
+    ],
+    "risk_factors": [
+      "乗客急増による混雑が課題化",
+      "利便性低下による長期的な不動産市況へのマイナス懸念"
+    ],
+    "investment_implication": "七隈線沿線（薬院・六本松・別府等）は今後も地価上昇余地あり。博多駅直結効果で沿線の1K〜2LDKが特に有望"
+  },
+
+  "7_supply_risk_analysis": {
+    "title": "供給過剰リスク分析",
+    "mansion_supply": {
+      "2024_new_supply_units": 2564,
+      "trend": "2016年以降3,000戸台→2023年以降は3,000戸割れで減少傾向",
+      "2025_forecast": "2,000戸台半ばが見込まれ、供給抑制基調が継続",
+      "avg_price_2024_万円": 5598,
+      "avg_price_yoy_pct": "+40%",
+      "avg_unit_price_per_sqm_千円": 889,
+      "avg_unit_price_yoy_pct": "+27%"
+    },
+    "office_supply_risk": {
+      "current_vacancy_pct": "約5%台",
+      "forecast_peak_vacancy_pct": "最大9%台への上昇可能性",
+      "trigger": "天神ビッグバン＋博多コネクティッドの竣工集中",
+      "mitigation": "人口流入・IT企業誘致が需要を下支え"
+    },
+    "二極化_risk": {
+      "description": "駅近・都心好立地 vs 立地劣位・高価格物件で明確な格差が拡大",
+      "safe_zone": "中央区・博多区の駅徒歩5分圏内",
+      "danger_zone": "価格が高騰しすぎた物件、やや立地が劣る郊外物件"
+    },
+    "supply_peak_window": "2026〜2027年が供給ピーク → その後は需給改善の見通し"
+  },
+
+  "8_rc_mansion_under_200m": {
+    "title": "2億円以内RC一棟マンション投資分析",
+    "market_overview": {
+      "typical_price_range_億円": "1.8〜2.6",
+      "yield_range": {
+        "new_construction": "4.0〜5.0%",
+        "10yr_plus": "5.5〜6.0%",
+        "20yr_plus": "6.0〜6.25%"
+      },
+      "examples": [
+        {
+          "location": "城南区七隈",
+          "price_億円": 1.8,
+          "gross_yield_pct": 6.0,
+          "structure": "RC",
+          "note": "七隈線沿線、単身向け"
+        },
+        {
+          "location": "早良区田隈",
+          "price_億円": 2.6,
+          "gross_yield_pct": 6.25,
+          "structure": "RC",
+          "note": "ファミリー向け"
+        }
+      ]
+    },
+    "scarcity_assessment": {
+      "level": "中〜高",
+      "reason": "建設費高騰で新築RCの2億以内は減少傾向。中古RC物件も人口流入による需要増で流通量が限定的",
+      "trend": "利回り圧縮が進行中。2020年以降、新築RCは4〜5%台が標準化"
+    },
+    "recommended_strategy": "築10〜20年のRC、博多区・中央区・城南区の駅徒歩7分圏、1K×10戸以上の単身向けが最も需給バランスに優れる"
+  },
+
+  "9_investment_recommendation": {
+    "title": "投資推奨・総合評価",
+    "ranking": [
+      {
+        "rank": 1,
+        "area": "天神・赤坂・薬院エリア",
+        "ward": "中央区",
+        "score": 92,
+        "rationale": "天神ビッグバンの中心地。地価+11%超/年。IT企業・商業集積で賃貸需要が極めて厚い。七隈線薬院駅〜天神南駅の利便性も高い",
+        "target": "築浅1K〜1LDK（単身IT人材向け）、一棟RC",
+        "budget": "区分:1,500万〜4,000万円、一棟:1.5億〜3億円"
+      },
+      {
+        "rank": 2,
+        "area": "博多駅周辺（博多区）",
+        "ward": "博多区",
+        "score": 88,
+        "rationale": "博多コネクティッド＋七隈線延伸のダブル効果。坪単価787万円・前年比+10%超。新幹線・空港アクセスの圧倒的利便性",
+        "target": "駅徒歩5分圏の築浅コンパクトマンション",
+        "budget": "区分:2,000万〜5,000万円、一棟:1.5億〜2.5億円"
+      },
+      {
+        "rank": 3,
+        "area": "七隈線沿線（六本松・別府・七隈）",
+        "ward": "城南区・中央区",
+        "score": 82,
+        "rationale": "博多駅直結効果で沿線地価+9%/年。大学・学生需要も厚い。2億以内のRC一棟マンションが比較的見つかりやすい",
+        "target": "一棟RC（1K×10戸〜）、学生・単身向け",
+        "budget": "一棟:1億〜2億円"
+      },
+      {
+        "rank": 4,
+        "area": "大名・今泉・春吉",
+        "ward": "中央区",
+        "score": 80,
+        "rationale": "天神ビッグバンの恩恵を直接受ける隣接エリア。飲食・商業の集積で若年層人気が高い。リノベ投資にも適性あり",
+        "target": "中古マンション（リノベ向け）、小規模一棟",
+        "budget": "区分:1,000万〜3,000万円、一棟:8,000万〜1.5億円"
+      }
+    ],
+    "overall_conclusion": "福岡市天神・博多エリアは、天神ビッグバン・博多コネクティッドの二大再開発、全国トップクラスの人口増加（若年層比率13.7%）、IT・スタートアップ集積、七隈線延伸効果が四重に重なる地方都市最強の投資環境。賃貸空室率1.6%は驚異的な水準であり、インカムゲインの安定性は東京都心5区を凌駕する。一方で、2026〜2027年のオフィス供給ピーク時に一時的な調整リスクがあり、JR九州の空中都市計画中止は過度な期待への警鐘。2億以内のRC一棟投資は、七隈線沿線の築10〜20年物件（表面利回り5.5〜6.5%）が最もリスク・リターンバランスに優れる。"
+  },
+
+  "10_risk_matrix": {
+    "title": "リスクマトリックス",
+    "risks": [
+      {
+        "category": "オフィス供給過剰",
+        "probability": "中〜高",
+        "impact": "中",
+        "timeframe": "2026〜2027年",
+        "detail": "空室率が最大9%台に上昇する可能性。成約賃料の一時的下落"
+      },
+      {
+        "category": "建設費高騰",
+        "probability": "高",
+        "impact": "中",
+        "timeframe": "継続中",
+        "detail": "新築RC物件の利回り圧縮が進行。2億以内の新築RC一棟は困難化"
+      },
+      {
+        "category": "金利上昇",
+        "probability": "中",
+        "impact": "高",
+        "timeframe": "2025〜2027年",
+        "detail": "日銀の利上げによる融資条件の悪化、投資収益の圧迫"
+      },
+      {
+        "category": "マンション価格高騰による需要減退",
+        "probability": "中",
+        "impact": "中",
+        "timeframe": "2025年〜",
+        "detail": "分譲単価+27%/年は持続困難。消費者の購買力限界に注意"
+      },
+      {
+        "category": "立地二極化",
+        "probability": "高",
+        "impact": "中〜高",
+        "timeframe": "継続・拡大",
+        "detail": "駅近好立地は堅調だが、立地劣位物件の売れ残り・空室リスクが増大"
+      },
+      {
+        "category": "インバウンド依存",
+        "probability": "低〜中",
+        "impact": "中",
+        "timeframe": "外的要因次第",
+        "detail": "アジアからの観光・ビジネス需要に依存する面あり。地政学リスクに脆弱"
+      }
+    ]
+  },
+
+  "vs_tokyo_core5_comparison": {
+    "title": "東京都心5区との比較",
+    "metrics": {
+      "gross_yield": {
+        "fukuoka": "4.0〜6.25%",
+        "tokyo_core5": "2.25〜3.12%",
+        "advantage": "福岡が1.5〜3%ポイント上回る"
+      },
+      "vacancy_rate": {
+        "fukuoka": "1.6%",
+        "tokyo_core5": "約3%",
+        "advantage": "福岡が大幅に低い"
+      },
+      "land_price_growth_yoy": {
+        "fukuoka": "+9〜11%",
+        "tokyo_core5": "+6〜18%（エリア差大）",
+        "advantage": "福岡は安定的に高成長"
+      },
+      "entry_price_1room_rc": {
+        "fukuoka": "一棟1.5〜2億円（10戸以上）",
+        "tokyo_core5": "一棟3〜10億円",
+        "advantage": "福岡は1/3〜1/5の投資額で参入可能"
+      },
+      "population_growth": {
+        "fukuoka": "+3.8%/年",
+        "tokyo_23ku": "+0.5〜1%/年",
+        "advantage": "福岡の成長率が圧倒的"
+      }
+    },
+    "conclusion": "キャピタルゲインは東京都心5区、インカムゲイン（利回り＋安定性）は福岡に優位性。分散投資の観点から、東京×福岡のポートフォリオが最適"
+  },
+
+  "data_sources": [
+    "福岡市公式 天神ビッグバン進捗 (city.fukuoka.lg.jp)",
+    "福岡市公式 博多コネクティッド (city.fukuoka.lg.jp)",
+    "三菱地所リアルエステート 福岡不動産市場レポート2025年7月 (mecyes.co.jp)",
+    "CBRE 福岡市場動向2025年3月期 (cbre-propertysearch.jp)",
+    "JLL 福岡オフィスマーケットダイナミクス2025Q4 (jll.com)",
+    "長谷工総合研究所 地方都市マンション供給動向2025 (haseko.co.jp)",
+    "総務省 住民基本台帳人口移動報告 (e-stat.go.jp)",
+    "福岡市推計人口 (city.fukuoka.lg.jp)",
+    "IREM JAPAN 全国賃貸住宅実態調査2025 (irem-japan.org)",
+    "三光不動産 福岡オフィスマーケット2025 (sanko-e.co.jp)",
+    "HOMES不動産投資 福岡一棟マンション (toushi.homes.co.jp)",
+    "ノムコム・プロ 福岡一棟マンション (nomu.com)",
+    "土地価格相場 七隈線 (tochidai.info)",
+    "西日本新聞 JR九州空中都市計画中止報道"
+  ],
+
+  "disclaimer": "本レポートは公開情報に基づく分析であり、投資助言ではありません。不動産投資には価格変動リスク、金利リスク、流動性リスク等が伴います。投資判断は自己責任で行ってください。"
+}

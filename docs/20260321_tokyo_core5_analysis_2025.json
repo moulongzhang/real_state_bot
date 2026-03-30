@@ -1,0 +1,680 @@
+{
+  "analysis_title": "東京都足立区江北3丁目 一棟RCマンション投資分析",
+  "analysis_date": "2025-07-18",
+  "disclaimer": "本分析は公開情報に基づく概算であり、投資助言ではありません。実際の投資判断には専門家への相談を推奨します。",
+  "property_overview": {
+    "location": "東京都足立区江北3丁目",
+    "price_yen": 145000000,
+    "structure": "RC造（鉄筋コンクリート）",
+    "built": "2024年9月（新築）",
+    "units": 8,
+    "gross_yield_pct": 4.75,
+    "annual_gross_income": 6887500,
+    "monthly_rent_per_unit": 71745,
+    "nearest_station": "日暮里舎人ライナー「江北」駅 徒歩11分",
+    "rc_legal_life_years": 47
+  },
+  "market_research": {
+    "rental_market": {
+      "kohoku_1r_range": "5.9万〜7.9万円/月",
+      "kohoku_1k_range": "6.8万〜7.2万円/月",
+      "adachi_avg_1k": "6.7万〜8.3万円/月",
+      "implied_rent_per_unit": "71,745円/月（利回り逆算）",
+      "market_alignment": "想定賃料¥71,745は江北1K相場上限付近。新築プレミアムで妥当だが、築年経過後の下落余地あり",
+      "rent_trend": "2024→2025年は概ね横ばい。新築・築浅は堅調、築古は下落傾向"
+    },
+    "area_demographics": {
+      "adachi_population_2025": "約698,276人",
+      "young_adults_20_39": "81,783人（全体の11.9%、全国平均10.3%超）",
+      "trend": "単身若年層は転入超過継続。子育て世代は流出傾向。2025年がピーク近く",
+      "demand_driver": "20代単身・外国人の流入がワンルーム需要を支える"
+    },
+    "redevelopment": {
+      "kohoku_area_design": "2025年3月都市計画告示。江北1-2-4丁目で用途地域変更",
+      "major_projects": [
+        "環七南通り（補助138号線）江北地区 → 2030年完成見込み",
+        "東京女子医大附属足立医療センター開院済み",
+        "RAKU SPA 足立江北（仮称）2026年12月オープン予定",
+        "高野スポーツパーク等3大新施設整備中",
+        "江北駅周辺地区計画変更 → 複合機能エリアへ転換"
+      ],
+      "impact": "ポジティブ。生活利便性向上で中長期的な資産価値下支え"
+    },
+    "toneri_liner_outlook": {
+      "land_price_trend": "沿線平均¥478,420/㎡、前年比+7.05%上昇",
+      "access": "日暮里経由で山手線・千代田線接続。西日暮里→大手町13分",
+      "assessment": "2008年開業の新路線。沿線開発進行中で将来性は中〜高"
+    },
+    "vacancy_risk": {
+      "adachi_estimated_vacancy": "11〜13%（23区平均並み〜やや高め）",
+      "new_build_advantage": "新築は入居率高い。築20年超で空室リスク上昇",
+      "mitigation": "当面5%想定。10年以降段階的に上昇"
+    },
+    "comparable_market": {
+      "tokyo_23ku_new_rc_yield": "都心3〜4%台、周辺区4〜4.8%",
+      "examples": [
+        {
+          "area": "練馬区2024竣工",
+          "price": "2.35億",
+          "yield": "4.60%"
+        },
+        {
+          "area": "中野区2024竣工",
+          "price": "3.00億",
+          "yield": "4.72%"
+        },
+        {
+          "area": "荒川区2026竣工",
+          "price": "5.60億",
+          "yield": "4.49%"
+        }
+      ],
+      "positioning": "4.75%は城北・城東新築RCで標準的〜やや魅力的"
+    }
+  },
+  "financing": {
+    "down_payment": 29000000.0,
+    "loan_amount": 116000000.0,
+    "interest_rate_pct": 1.7999999999999998,
+    "loan_term_years": 35,
+    "monthly_payment": 372466,
+    "annual_debt_service": 4469592
+  },
+  "operating_assumptions": {
+    "initial_vacancy_pct": 5.0,
+    "vacancy_annual_increase": "+0.15%/年",
+    "management_fee_pct": 5.0,
+    "property_tax_year1_5": 950000,
+    "property_tax_year6_plus": 1200000,
+    "insurance": 120000,
+    "rent_decline": "3年目から年-0.5%"
+  },
+  "major_repair_schedule": {
+    "year_12": {
+      "cost": 8000000,
+      "scope": "外壁塗装・屋上防水・共用部設備更新・鉄部塗装"
+    },
+    "year_24": {
+      "cost": 12000000,
+      "scope": "外壁防水全面改修・給排水管更新・共用部リニューアル"
+    },
+    "repair_reserve": "月額8,000円/戸 → 年間768,000円（別会計で積立）"
+  },
+  "cashflow_30year": {
+    "key_metrics": {
+      "year_1": {
+        "noi": 4845969,
+        "btcf": 376377
+      },
+      "year_5": {
+        "noi": 4676869,
+        "btcf": 207277
+      },
+      "year_10": {
+        "noi": 4160881,
+        "btcf": -308711
+      },
+      "year_15": {
+        "noi": 3888527,
+        "btcf": -581065
+      },
+      "year_20": {
+        "noi": 3611848,
+        "btcf": -857744
+      },
+      "year_30": {
+        "noi": 3038234,
+        "btcf": -1431358
+      },
+      "cumulative_10y": -28497459,
+      "cumulative_20y": -42589968,
+      "cumulative_30y": -66295569
+    },
+    "annual_detail": [
+      {
+        "year": 1,
+        "gross_income": 6887500,
+        "vacancy_rate_pct": 5.0,
+        "effective_income": 6543125,
+        "total_opex": 1697156,
+        "noi": 4845969,
+        "debt_service": 4469592,
+        "btcf": 376377,
+        "cumulative_cf": -28623623,
+        "remaining_loan": 113598661,
+        "major_repair": 0
+      },
+      {
+        "year": 2,
+        "gross_income": 6887500,
+        "vacancy_rate_pct": 5.2,
+        "effective_income": 6532794,
+        "total_opex": 1705640,
+        "noi": 4827154,
+        "debt_service": 4469592,
+        "btcf": 357562,
+        "cumulative_cf": -28266061,
+        "remaining_loan": 111153740,
+        "major_repair": 0
+      },
+      {
+        "year": 3,
+        "gross_income": 6853062,
+        "vacancy_rate_pct": 5.3,
+        "effective_income": 6489850,
+        "total_opex": 1712763,
+        "noi": 4777088,
+        "debt_service": 4469592,
+        "btcf": 307496,
+        "cumulative_cf": -27958565,
+        "remaining_loan": 108664446,
+        "major_repair": 0
+      },
+      {
+        "year": 4,
+        "gross_income": 6818797,
+        "vacancy_rate_pct": 5.5,
+        "effective_income": 6447173,
+        "total_opex": 1720177,
+        "noi": 4726996,
+        "debt_service": 4469592,
+        "btcf": 257404,
+        "cumulative_cf": -27701161,
+        "remaining_loan": 106129972,
+        "major_repair": 0
+      },
+      {
+        "year": 5,
+        "gross_income": 6784703,
+        "vacancy_rate_pct": 5.6,
+        "effective_income": 6404760,
+        "total_opex": 1727891,
+        "noi": 4676869,
+        "debt_service": 4469592,
+        "btcf": 207277,
+        "cumulative_cf": -27493884,
+        "remaining_loan": 103549500,
+        "major_repair": 0
+      },
+      {
+        "year": 6,
+        "gross_income": 6750780,
+        "vacancy_rate_pct": 5.8,
+        "effective_income": 6362610,
+        "total_opex": 1985913,
+        "noi": 4376697,
+        "debt_service": 4469592,
+        "btcf": -92895,
+        "cumulative_cf": -27586779,
+        "remaining_loan": 100922194,
+        "major_repair": 0
+      },
+      {
+        "year": 7,
+        "gross_income": 6717026,
+        "vacancy_rate_pct": 5.9,
+        "effective_income": 6320721,
+        "total_opex": 1997852,
+        "noi": 4322870,
+        "debt_service": 4469592,
+        "btcf": -146722,
+        "cumulative_cf": -27733501,
+        "remaining_loan": 98247205,
+        "major_repair": 0
+      },
+      {
+        "year": 8,
+        "gross_income": 6683441,
+        "vacancy_rate_pct": 6.1,
+        "effective_income": 6279092,
+        "total_opex": 2010128,
+        "noi": 4268965,
+        "debt_service": 4469592,
+        "btcf": -200627,
+        "cumulative_cf": -27934128,
+        "remaining_loan": 95523666,
+        "major_repair": 0
+      },
+      {
+        "year": 9,
+        "gross_income": 6650023,
+        "vacancy_rate_pct": 6.2,
+        "effective_income": 6237722,
+        "total_opex": 2022750,
+        "noi": 4214972,
+        "debt_service": 4469592,
+        "btcf": -254619,
+        "cumulative_cf": -28188748,
+        "remaining_loan": 92750698,
+        "major_repair": 0
+      },
+      {
+        "year": 10,
+        "gross_income": 6616773,
+        "vacancy_rate_pct": 6.3,
+        "effective_income": 6196608,
+        "total_opex": 2035727,
+        "noi": 4160881,
+        "debt_service": 4469592,
+        "btcf": -308711,
+        "cumulative_cf": -28497459,
+        "remaining_loan": 89927402,
+        "major_repair": 0
+      },
+      {
+        "year": 11,
+        "gross_income": 6583689,
+        "vacancy_rate_pct": 6.5,
+        "effective_income": 6155750,
+        "total_opex": 2049071,
+        "noi": 4106679,
+        "debt_service": 4469592,
+        "btcf": -362913,
+        "cumulative_cf": -28860372,
+        "remaining_loan": 87052865,
+        "major_repair": 0
+      },
+      {
+        "year": 12,
+        "gross_income": 6550771,
+        "vacancy_rate_pct": 6.7,
+        "effective_income": 6115145,
+        "total_opex": 2062790,
+        "noi": 4052355,
+        "debt_service": 4469592,
+        "btcf": -8417237,
+        "cumulative_cf": -37277609,
+        "remaining_loan": 84126158,
+        "major_repair": 8000000
+      },
+      {
+        "year": 13,
+        "gross_income": 6518017,
+        "vacancy_rate_pct": 6.8,
+        "effective_income": 6074792,
+        "total_opex": 2076896,
+        "noi": 3997896,
+        "debt_service": 4469592,
+        "btcf": -471696,
+        "cumulative_cf": -37749305,
+        "remaining_loan": 81146333,
+        "major_repair": 0
+      },
+      {
+        "year": 14,
+        "gross_income": 6485427,
+        "vacancy_rate_pct": 7.0,
+        "effective_income": 6034690,
+        "total_opex": 2091399,
+        "noi": 3943291,
+        "debt_service": 4469592,
+        "btcf": -526301,
+        "cumulative_cf": -38275605,
+        "remaining_loan": 78112427,
+        "major_repair": 0
+      },
+      {
+        "year": 15,
+        "gross_income": 6453000,
+        "vacancy_rate_pct": 7.1,
+        "effective_income": 5994837,
+        "total_opex": 2106310,
+        "noi": 3888527,
+        "debt_service": 4469592,
+        "btcf": -581065,
+        "cumulative_cf": -38856671,
+        "remaining_loan": 75023457,
+        "major_repair": 0
+      },
+      {
+        "year": 16,
+        "gross_income": 6420735,
+        "vacancy_rate_pct": 7.3,
+        "effective_income": 5955232,
+        "total_opex": 2121642,
+        "noi": 3833590,
+        "debt_service": 4469592,
+        "btcf": -636002,
+        "cumulative_cf": -39492673,
+        "remaining_loan": 71878425,
+        "major_repair": 0
+      },
+      {
+        "year": 17,
+        "gross_income": 6388631,
+        "vacancy_rate_pct": 7.4,
+        "effective_income": 5915873,
+        "total_opex": 2137405,
+        "noi": 3778468,
+        "debt_service": 4469592,
+        "btcf": -691124,
+        "cumulative_cf": -40183797,
+        "remaining_loan": 68676313,
+        "major_repair": 0
+      },
+      {
+        "year": 18,
+        "gross_income": 6356688,
+        "vacancy_rate_pct": 7.6,
+        "effective_income": 5876758,
+        "total_opex": 2153612,
+        "noi": 3723146,
+        "debt_service": 4469592,
+        "btcf": -746446,
+        "cumulative_cf": -40930243,
+        "remaining_loan": 65416086,
+        "major_repair": 0
+      },
+      {
+        "year": 19,
+        "gross_income": 6324905,
+        "vacancy_rate_pct": 7.7,
+        "effective_income": 5837887,
+        "total_opex": 2170276,
+        "noi": 3667611,
+        "debt_service": 4469592,
+        "btcf": -801981,
+        "cumulative_cf": -41732224,
+        "remaining_loan": 62096687,
+        "major_repair": 0
+      },
+      {
+        "year": 20,
+        "gross_income": 6293280,
+        "vacancy_rate_pct": 7.8,
+        "effective_income": 5799258,
+        "total_opex": 2187409,
+        "noi": 3611848,
+        "debt_service": 4469592,
+        "btcf": -857744,
+        "cumulative_cf": -42589968,
+        "remaining_loan": 58717044,
+        "major_repair": 0
+      },
+      {
+        "year": 21,
+        "gross_income": 6261814,
+        "vacancy_rate_pct": 8.0,
+        "effective_income": 5760869,
+        "total_opex": 2205026,
+        "noi": 3555843,
+        "debt_service": 4469592,
+        "btcf": -913749,
+        "cumulative_cf": -43503716,
+        "remaining_loan": 55276063,
+        "major_repair": 0
+      },
+      {
+        "year": 22,
+        "gross_income": 6230505,
+        "vacancy_rate_pct": 8.2,
+        "effective_income": 5722719,
+        "total_opex": 2223139,
+        "noi": 3499580,
+        "debt_service": 4469592,
+        "btcf": -970012,
+        "cumulative_cf": -44473728,
+        "remaining_loan": 51772631,
+        "major_repair": 0
+      },
+      {
+        "year": 23,
+        "gross_income": 6199352,
+        "vacancy_rate_pct": 8.3,
+        "effective_income": 5684806,
+        "total_opex": 2241762,
+        "noi": 3443044,
+        "debt_service": 4469592,
+        "btcf": -1026548,
+        "cumulative_cf": -45500277,
+        "remaining_loan": 48205614,
+        "major_repair": 0
+      },
+      {
+        "year": 24,
+        "gross_income": 6168355,
+        "vacancy_rate_pct": 8.5,
+        "effective_income": 5647129,
+        "total_opex": 2260912,
+        "noi": 3386218,
+        "debt_service": 4469592,
+        "btcf": -13083374,
+        "cumulative_cf": -58583651,
+        "remaining_loan": 44573858,
+        "major_repair": 12000000
+      },
+      {
+        "year": 25,
+        "gross_income": 6137514,
+        "vacancy_rate_pct": 8.6,
+        "effective_income": 5609687,
+        "total_opex": 2280601,
+        "noi": 3329086,
+        "debt_service": 4469592,
+        "btcf": -1140506,
+        "cumulative_cf": -59724157,
+        "remaining_loan": 40876189,
+        "major_repair": 0
+      },
+      {
+        "year": 26,
+        "gross_income": 6106826,
+        "vacancy_rate_pct": 8.8,
+        "effective_income": 5572479,
+        "total_opex": 2300847,
+        "noi": 3271632,
+        "debt_service": 4469592,
+        "btcf": -1197960,
+        "cumulative_cf": -60922117,
+        "remaining_loan": 37111410,
+        "major_repair": 0
+      },
+      {
+        "year": 27,
+        "gross_income": 6076292,
+        "vacancy_rate_pct": 8.9,
+        "effective_income": 5535502,
+        "total_opex": 2321664,
+        "noi": 3213838,
+        "debt_service": 4469592,
+        "btcf": -1255754,
+        "cumulative_cf": -62177871,
+        "remaining_loan": 33278303,
+        "major_repair": 0
+      },
+      {
+        "year": 28,
+        "gross_income": 6045910,
+        "vacancy_rate_pct": 9.0,
+        "effective_income": 5498756,
+        "total_opex": 2343070,
+        "noi": 3155686,
+        "debt_service": 4469592,
+        "btcf": -1313906,
+        "cumulative_cf": -63491777,
+        "remaining_loan": 29375628,
+        "major_repair": 0
+      },
+      {
+        "year": 29,
+        "gross_income": 6015681,
+        "vacancy_rate_pct": 9.2,
+        "effective_income": 5462238,
+        "total_opex": 2365081,
+        "noi": 3097157,
+        "debt_service": 4469592,
+        "btcf": -1372435,
+        "cumulative_cf": -64864211,
+        "remaining_loan": 25402123,
+        "major_repair": 0
+      },
+      {
+        "year": 30,
+        "gross_income": 5985603,
+        "vacancy_rate_pct": 9.3,
+        "effective_income": 5425949,
+        "total_opex": 2387715,
+        "noi": 3038234,
+        "debt_service": 4469592,
+        "btcf": -1431358,
+        "cumulative_cf": -66295569,
+        "remaining_loan": 21356501,
+        "major_repair": 0
+      }
+    ]
+  },
+  "exit_strategy": {
+    "scenario_10year": {
+      "holding_period": "10年（推奨）",
+      "exit_gross_yield_pct": 5.5,
+      "estimated_sale_price": 120304964,
+      "selling_cost_3pct": 3609149,
+      "remaining_loan": 89927402,
+      "net_sale_proceeds": 26768413,
+      "cumulative_cf_10y": -28497459,
+      "total_profit": -1729046.0,
+      "roi_on_equity_pct": -6.0,
+      "irr_pct": -0.63,
+      "note": "再開発(2030年)完了後。RC築10年は融資付き良好で買い手多数"
+    },
+    "scenario_15year": {
+      "holding_period": "15年",
+      "exit_gross_yield_pct": 5.8,
+      "estimated_sale_price": 111258621,
+      "selling_cost_3pct": 3337759,
+      "remaining_loan": 75023457,
+      "net_sale_proceeds": 32897405,
+      "cumulative_cf_15y": -38856671,
+      "total_profit": -5959266.0,
+      "roi_on_equity_pct": -20.5,
+      "irr_pct": -1.45,
+      "note": "第1回大規模修繕(12年目)後。減価償却メリット活用済み"
+    },
+    "scenario_20year": {
+      "holding_period": "20年",
+      "exit_gross_yield_pct": 6.2,
+      "estimated_sale_price": 101504516,
+      "selling_cost_3pct": 3045135,
+      "remaining_loan": 58717044,
+      "net_sale_proceeds": 39742337,
+      "cumulative_cf_20y": -42589968,
+      "total_profit": -2847631.0,
+      "roi_on_equity_pct": -9.8,
+      "irr_pct": -0.45,
+      "note": "RC残耐用年数27年で融資付可。2回目修繕前売却が理想"
+    },
+    "recommended_strategy": "10〜15年保有後売却を推奨。再開発完了後の資産価値上昇を享受しつつ大規模修繕コストを回避"
+  },
+  "competitive_analysis": {
+    "strengths": [
+      "新築RC造 → 最長融資期間・修繕リスク最小・入居付け容易",
+      "表面4.75%は城北エリア新築RCで競争力あり",
+      "江北再開発進行中 → 中長期的な資産価値上昇期待",
+      "単身若年層の転入超過 → ワンルーム需要堅調",
+      "舎人ライナー沿線地価+7.05%/年上昇トレンド",
+      "東京女子医大足立医療センター → 医療従事者の賃貸需要",
+      "8戸規模 → 管理容易・空室リスク分散"
+    ],
+    "weaknesses": [
+      "駅徒歩11分 → 10分以内の閾値を超えており競争力やや劣る",
+      "舎人ライナーはJR/メトロ比で輸送力・認知度が劣る",
+      "足立区ブランド → 他区比で賃料上昇余地が限定的",
+      "レバレッジ後のCFが薄い（実質利回り低い）",
+      "浸水リスクエリアの可能性（ハザードマップ確認必須）"
+    ],
+    "opportunities": [
+      "環七南通り開通(2030年) → 交通利便性・地価上昇",
+      "RAKU SPA等新施設 → 地域活性化・人口流入",
+      "外国人労働者増加 → 賃貸需要底上げ",
+      "再開発完了後のエリア格上げ → 出口キャップレート改善"
+    ],
+    "threats": [
+      "日銀利上げ → 変動金利2%超でCF悪化",
+      "足立区人口ピーク到達 → 長期的需要減少",
+      "新築供給競合 → 入居者獲得競争激化",
+      "築年経過による賃料下落 → 10年で5〜8%下落が一般的",
+      "大規模災害（荒川氾濫） → 浸水被害リスク"
+    ]
+  },
+  "risk_matrix": {
+    "vacancy": {
+      "level": "中",
+      "score": 6,
+      "note": "新築有利だが駅11分で中期的に上昇"
+    },
+    "interest": {
+      "level": "高",
+      "score": 7,
+      "note": "CF薄く金利0.5%上昇でも影響大"
+    },
+    "liquidity": {
+      "level": "中",
+      "score": 5,
+      "note": "RC高流動性。足立区は買い手層限定的"
+    },
+    "disaster": {
+      "level": "中高",
+      "score": 6,
+      "note": "荒川近接。浸水深要確認"
+    },
+    "market": {
+      "level": "中",
+      "score": 5,
+      "note": "再開発プラスだが人口減が長期懸念"
+    }
+  },
+  "overall_assessment": {
+    "score": 6.5,
+    "max_score": 10,
+    "grade": "B+（条件付き推奨）",
+    "breakdown": {
+      "profitability": {
+        "score": 5.5,
+        "comment": "表面4.75%は標準的。実質CF薄くレバレッジ効果限定"
+      },
+      "safety": {
+        "score": 7.0,
+        "comment": "新築RC・8戸分散・再開発エリアで底堅い"
+      },
+      "growth": {
+        "score": 7.0,
+        "comment": "再開発・地価上昇は魅力。賃料大幅上昇は期待薄"
+      },
+      "liquidity": {
+        "score": 6.5,
+        "comment": "RC売却容易だが足立区×徒歩11分は都心に劣る"
+      },
+      "overall": {
+        "score": 6.5,
+        "comment": "10〜15年保有・再開発効果享受後の売却で合理的投資"
+      }
+    },
+    "key_recommendations": [
+      "① 頭金30%以上でCF安定化（月次黒字化の閾値）",
+      "② 固定金利or金利上限特約付きローンを推奨",
+      "③ ハザードマップ確認＋水災特約付き火災保険加入必須",
+      "④ サブリースより管理委託で利益率確保",
+      "⑤ 10年目出口を主軸に再開発完了後の売却タイミングを計る",
+      "⑥ ネット無料・宅配BOX等の設備投資で競争力維持"
+    ],
+    "tax_adjusted_note": "税引前IRRは▲0.63%だが、減価償却節税(年間約61万円)を加味した税引後IRRは+1.0〜1.5%と推定。高所得者の節税＋資産形成目的なら合理的投資。"
+  },
+  "data_sources": [
+    "アットホーム - 江北駅家賃相場",
+    "LIFULL HOME'S - 足立区家賃相場・賃貸需要",
+    "Yahoo!不動産 - 足立区家賃推移",
+    "tochidai.info - 日暮里舎人ライナー地価動向",
+    "足立区公式 - 江北のまちづくり・人口推計",
+    "不動産経済研究所 - 首都圏投資用マンション市場動向2025",
+    "東京カンテイ - 駅別中古マンション価格",
+    "東急リバブル/ノムコム・プロ - 一棟RC売却事例"
+  ],
+  "tax_benefit_note": {
+    "depreciation": "RC造47年定額法: 建物比率60%想定 → 年間約¥1,851,064の減価償却費",
+    "annual_depreciation": 1851064,
+    "tax_shield_effect": "課税所得900万円超の投資家なら実効税率33%で年間約¥61万の節税効果",
+    "annual_tax_saving_estimate": 610851,
+    "impact_on_irr": "税引後IRRは+1.5〜2.0%改善見込み → 10年保有で実質IRR約+1.0〜1.5%",
+    "note": "上記CFは税引前。減価償却による節税を加味すると投資採算は改善する"
+  }
+}

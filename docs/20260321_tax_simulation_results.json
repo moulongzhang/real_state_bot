@@ -1,0 +1,46 @@
+{
+  "property": {
+    "price": 200000000,
+    "noi": 12000000,
+    "depreciation": 2982000,
+    "loan": 160000000,
+    "debt_service": 7096693
+  },
+  "cases": {
+    "1_salary10m_individual": {
+      "annual_cf": 2610789,
+      "tax_on_re": 2292518,
+      "eff_rate": 36.8
+    },
+    "2a_salary10m_corp_min": {
+      "annual_cf": 3004365,
+      "tax": 1270142,
+      "si": 178800
+    },
+    "2b_salary10m_corp_split": {
+      "annual_cf": 2675711,
+      "tax": 1062396,
+      "si": 715200
+    },
+    "3_salary20m_individual": {
+      "annual_cf": 2096641,
+      "tax_on_re": 2806666,
+      "eff_rate": 45.0
+    },
+    "3a_salary20m_corp_min": {
+      "annual_cf": 2930955,
+      "tax": 1343552,
+      "si": 178800
+    },
+    "3b_salary20m_corp_3split": {
+      "annual_cf": 2743495,
+      "tax": 815812,
+      "si": 894000
+    }
+  },
+  "recommendation": {
+    "salary_10m_single_property": "個人保有 (シンプルでCF差は僅少)",
+    "salary_10m_multi_property": "法人(合同会社) 設立推奨",
+    "salary_20m": "法人(合同会社)+内部留保重視+低額家族分散"
+  }
+}

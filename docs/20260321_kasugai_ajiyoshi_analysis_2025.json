@@ -1,0 +1,426 @@
+{
+  "report_title": "春日井市味美白山町2丁目 一棟RCマンション投資分析レポート",
+  "report_date": "2025年7月",
+  "analyst": "不動産投資専門アナリスト",
+
+  "0_property_summary": {
+    "address": "愛知県春日井市味美白山町2丁目",
+    "price_yen": 115000000,
+    "price_display": "1億1,500万円",
+    "structure": "RC造（鉄筋コンクリート）4階建",
+    "built": "2008年4月",
+    "age_years": 17,
+    "rc_legal_useful_life_years": 47,
+    "remaining_legal_life_years": 30,
+    "units": 12,
+    "unit_type": "全戸1DK",
+    "gross_yield_pct": "6.80〜6.87%",
+    "building_area_sqm": 368.52,
+    "land_area_sqm": 412.21,
+    "access": [
+      "JR城北線「味美」駅 徒歩5分",
+      "名鉄小牧線「味美」駅 徒歩9分"
+    ],
+    "parking": "7台",
+    "equipment": ["防犯カメラ", "宅配BOX", "2023-2024年大規模修繕済"],
+    "sqm_unit_price_building": 312082,
+    "sqm_unit_price_land": 278993,
+    "per_unit_price": 9583333
+  },
+
+  "1_market_research": {
+    "1a_rental_market": {
+      "area_1dk_rent_range": "4.2万〜5.7万円/月",
+      "station_close_rc_premium": "5.5万〜6.5万円/月",
+      "estimated_property_rent_per_unit": "約5.5万円/月（利回り逆算）",
+      "vacancy_rate_estimate": "5〜10%（エリア平均）",
+      "rental_demand_drivers": [
+        "名古屋市勤務の単身社会人（ベッドタウン需要）",
+        "近隣大学の学生",
+        "地元企業・工場従業員",
+        "1DKは単身者の回転率が高く空室期間が短い"
+      ],
+      "competition_assessment": "1DK供給は多いが、RC造・駅近・防犯カメラ・宅配BOX付きの築浅物件は差別化可能",
+      "source": "エイブル・CHINTAI・LIFULL HOME'S・アットホーム"
+    },
+    "1b_population_demographics": {
+      "current_population_2025": 305902,
+      "population_peak": "2020年代前半（現在がほぼピーク）",
+      "projected_2050": 273342,
+      "decline_rate_to_2050": "-10.6%",
+      "aging_rate_2025": "26.2%（4人に1人が65歳以上）",
+      "projected_aging_2045": "34%超",
+      "young_worker_trend": "若年層は年々減少傾向",
+      "implication": "人口減少局面に入るが、名古屋通勤圏の単身需要は相対的に底堅い。ただし長期的には賃料下落圧力あり",
+      "source": "春日井市公式・街グラフ・国勢調査"
+    },
+    "1c_transportation": {
+      "jr_johoku_line": {
+        "description": "JR城北線（東海交通事業）",
+        "ajiyoshi_walk_min": 5,
+        "note": "運行本数が少なく（1時間に1-2本）、実用性はやや限定的"
+      },
+      "meitetsu_komaki_line": {
+        "description": "名鉄小牧線（地下鉄上飯田線直通）",
+        "ajiyoshi_walk_min": 9,
+        "note": "上飯田線経由で名古屋市中心部（栄・名駅方面）へ乗り換え1回。通勤利用の主力路線",
+        "to_nagoya_center_min": "約30〜40分（乗り換え含む）"
+      },
+      "car_access": "名古屋高速・国道19号が近く車通勤も便利。駐車場7台は大きなメリット",
+      "assessment": "2路線利用可能は一定の価値があるが、JR城北線は本数少なく実質的には名鉄小牧線依存。名古屋都心へのアクセスは「便利」と「不便」の中間"
+    },
+    "1d_redevelopment_plans": {
+      "jr_kasugai_station_ne": "JR春日井駅北東地区市街地再開発事業（タワマン・商業施設）",
+      "kozoji_new_town": "高蔵寺リ・ニュータウン計画（MaaS・モビリティ施策）",
+      "urban_master_plan": "春日井市都市計画マスタープラン2020-2029（集約型都市構造・駅周辺拠点整備）",
+      "compact_city": "立地適正化計画による居住誘導区域の設定",
+      "impact_on_property": "味美エリアへの直接的な再開発効果は限定的。JR春日井駅周辺が重点エリア。ただしコンパクトシティ施策は駅近物件にプラス",
+      "source": "春日井市公式・都市計画マスタープラン"
+    },
+    "1e_comparable_sales": {
+      "comp_1": {
+        "location": "春日井市鳥居松町",
+        "structure": "RC一棟マンション",
+        "age_years": 37,
+        "units": 12,
+        "floor_area_sqm": 439.64,
+        "price_yen": 85000000,
+        "gross_yield_pct": 9.16,
+        "sqm_price": 193400
+      },
+      "market_range": {
+        "kasugai_1bldg_rc_price": "7,000万〜1.2億円",
+        "kasugai_1bldg_rc_yield": "7〜10%（築年による）",
+        "kasugai_sqm_avg": "約27.8万円/㎡"
+      },
+      "assessment": "本物件は築17年・大規模修繕済で状態良好。利回り6.8%は築年相応だが、同エリアの築古RC（9%超）と比べるとやや低い。その分、建物リスクが低い安心感がある"
+    },
+    "1f_hazard_risk": {
+      "flood": {
+        "risk_level": "中程度",
+        "detail": "庄内川・大山川の浸水想定区域に注意。味美エリアの具体的浸水深は洪水HMで要確認（東部・中部地区版）",
+        "mitigation": "RC4階建のため、1階浸水リスクがあっても上層階の被害は限定的"
+      },
+      "earthquake": {
+        "risk_level": "中程度",
+        "detail": "南海トラフ巨大地震で震度6弱〜6強を想定。市内に活断層の確認なし",
+        "mitigation": "2008年築のRC造は新耐震基準（1981年以降）に適合。耐震性は高い"
+      },
+      "liquefaction": {
+        "risk_level": "低い",
+        "detail": "台地・段丘地形で液状化リスクは非常に低い",
+        "source": "住所検索ハザードマップ・国土交通省ポータル"
+      },
+      "overall_hazard_score": "△（やや注意） — 地震リスクは愛知県全般に存在するが、新耐震RC＋低液状化リスクで相対的に安全"
+    }
+  },
+
+  "2_financial_analysis": {
+    "2a_income_projection": {
+      "assumed_monthly_rent_per_unit": 54861,
+      "annual_gross_potential_income": 7899984,
+      "vacancy_loss_pct": 7,
+      "effective_gross_income": 7347000,
+      "note": "利回り6.87%から逆算: 115,000,000 × 0.0687 = 7,900,500円"
+    },
+    "2b_operating_expenses": {
+      "management_fee_pct": 5,
+      "management_fee_yen": 395000,
+      "property_tax_estimate": 800000,
+      "insurance": 150000,
+      "repair_reserve": 500000,
+      "common_area_utilities": 180000,
+      "misc_expenses": 200000,
+      "total_opex": 2225000,
+      "opex_ratio_pct": 28.2,
+      "note": "大規模修繕済のため当面の修繕積立は低めに設定"
+    },
+    "2c_net_operating_income": {
+      "noi_yen": 5122000,
+      "noi_yield_pct": 4.45,
+      "cap_rate_market_estimate": "5.0〜6.0%（春日井RC）"
+    },
+    "2d_financing_assumptions": {
+      "purchase_price": 115000000,
+      "acquisition_costs_pct": 7,
+      "acquisition_costs_yen": 8050000,
+      "total_investment": 123050000,
+      "down_payment_pct": 20,
+      "down_payment_yen": 23000000,
+      "loan_amount": 92000000,
+      "interest_rate_pct": 2.0,
+      "loan_term_years": 25,
+      "annual_debt_service": 4678000,
+      "monthly_payment": 389833,
+      "note": "RC築17年は残存法定耐用年数30年あり、25年融資は現実的"
+    },
+    "2e_cash_flow_annual": {
+      "year_1_cf_before_tax": 444000,
+      "ccr_pct": 1.93,
+      "dscr": 1.09,
+      "note": "DSCR 1.09は銀行の最低基準（1.2）をやや下回る。金利交渉または頭金増額を検討"
+    },
+    "2f_30year_projection": {
+      "assumptions": {
+        "rent_decline_annual_pct": -0.3,
+        "opex_increase_annual_pct": 1.0,
+        "major_repair_year_15": 12000000,
+        "major_repair_year_25": 10000000,
+        "exit_cap_rate_pct": 8.0,
+        "interest_rate_scenario": "固定2.0%で試算（変動の場合リスクあり）"
+      },
+      "phase_1_years_1_to_10": {
+        "label": "安定期（大規模修繕後の黄金期）",
+        "avg_annual_cf": 400000,
+        "cumulative_cf": 4000000,
+        "key_point": "修繕コスト最小、空室率低位安定"
+      },
+      "phase_2_years_11_to_15": {
+        "label": "成熟期（次の修繕に向けた蓄積期）",
+        "avg_annual_cf": 200000,
+        "cumulative_cf": 1000000,
+        "key_point": "賃料微減・経費増でCF縮小、Year15に大規模修繕¥1,200万"
+      },
+      "phase_3_years_16_to_25": {
+        "label": "返済完了期",
+        "avg_annual_cf_before_y25": 100000,
+        "year_25_loan_payoff": true,
+        "cumulative_cf": 1000000,
+        "key_point": "築32-42年でCF圧迫。Year25でローン完済、以降CF大幅改善"
+      },
+      "phase_4_years_26_to_30": {
+        "label": "無借金期（建物寿命末期）",
+        "avg_annual_cf": 3500000,
+        "cumulative_cf": 17500000,
+        "key_point": "ローン返済なしでCF最大化。ただし築42-47年で建替え・売却の判断時期"
+      },
+      "total_30year_summary": {
+        "cumulative_cf_before_tax": 23500000,
+        "equity_buildup_loan_principal": 92000000,
+        "total_equity_accumulated": 115500000,
+        "exit_value_estimate": {
+          "scenario_optimistic": {
+            "cap_rate": 7.0,
+            "noi_at_exit": 3800000,
+            "exit_price": 54285714,
+            "note": "土地値＋αで売却"
+          },
+          "scenario_base": {
+            "cap_rate": 8.5,
+            "noi_at_exit": 3500000,
+            "exit_price": 41176470,
+            "note": "RC築47年は解体前提の土地値評価寄り"
+          },
+          "scenario_pessimistic": {
+            "land_value_only": true,
+            "land_sqm_price": 150000,
+            "exit_price": 61831500,
+            "note": "412.21㎡ × 15万円 = 建物解体費控除前"
+          }
+        },
+        "total_return_base_scenario": {
+          "total_cf": 23500000,
+          "exit_proceeds_minus_costs": 38000000,
+          "total_return_on_equity": 61500000,
+          "roi_on_initial_23m_pct": 267,
+          "annualized_roi_pct": 4.4,
+          "note": "30年で初期投資2,300万円が約6,150万円に。年率約4.4%のリターン"
+        }
+      }
+    }
+  },
+
+  "3_strengths_analysis": {
+    "3a_post_repair_advantage": {
+      "score": "★★★★★（5/5）",
+      "detail": [
+        "2023-24年の大規模修繕済は最大のセールスポイント",
+        "通常、一棟RC購入後3-5年以内に大規模修繕が必要なケースが多く、追加1,000-2,000万円の出費が発生",
+        "本物件は購入直後の大規模修繕リスクがゼロ",
+        "次回大規模修繕は10-15年後の見込み",
+        "外観・共用部のリフレッシュで入居者満足度と募集力が向上済み",
+        "融資審査でもプラス評価（修繕履歴は銀行が重視）"
+      ]
+    },
+    "3b_price_value": {
+      "score": "★★★★☆（4/5）",
+      "detail": [
+        "1戸あたり約958万円は1DK RC物件として割安水準",
+        "㎡単価31.2万円は春日井市平均（27.8万円）よりやや高いが、築17年RC修繕済としては妥当",
+        "同エリア築37年RC（㎡19.3万円）との比較で、築年差20年・修繕済を考慮すれば適正〜やや割安",
+        "名古屋市内の同スペックなら1.5-2億円台。春日井価格の恩恵あり"
+      ]
+    },
+    "3c_station_and_parking": {
+      "score": "★★★★☆（4/5）",
+      "detail": [
+        "JR徒歩5分は強力な募集訴求力（「駅近」の心理的ライン）",
+        "2路線利用可能（JR城北線＋名鉄小牧線）は希少性あり",
+        "駐車場7台/12戸は車社会の愛知県で必須。駐車場収入（月5,000-8,000円×7台）も加算可能",
+        "推定駐車場年収: 42-67万円（利回りに未反映なら追加収益）",
+        "車なし単身者は電車、車あり世帯は駐車場利用と幅広い入居者層に対応"
+      ]
+    },
+    "3d_nagoya_commute_demand": {
+      "score": "★★★☆☆（3/5）",
+      "detail": [
+        "名鉄小牧線→地下鉄上飯田線直通で名古屋市内へ30-40分",
+        "名古屋駅までは乗り換え必要でやや不便",
+        "春日井市は人口30万人超の中核市で、市内勤務者の需要もあり",
+        "ただしリモートワーク普及で「名古屋通勤」の絶対的優位性は低下傾向"
+      ]
+    }
+  },
+
+  "4_risk_analysis": {
+    "4a_population_decline_risk": {
+      "severity": "中〜高",
+      "detail": "2050年までに約10%人口減少。単身世帯数は横ばい〜微減だが、1DK需要は大きく崩れにくい",
+      "mitigation": "1DK特化は単身需要に合致。ファミリー向けより人口減の影響を受けにくい"
+    },
+    "4b_interest_rate_risk": {
+      "severity": "中",
+      "detail": "日銀の利上げ局面。変動金利の場合、+1%で年間CF約92万円悪化",
+      "mitigation": "可能であれば固定金利を選択。DSCR改善のため頭金30%も検討"
+    },
+    "4c_rent_decline_risk": {
+      "severity": "中",
+      "detail": "築年経過＋人口減で中長期的に賃料下落圧力。年0.3-0.5%程度の下落を想定",
+      "mitigation": "設備更新（ネット無料・モニターインターホン等）で競争力維持"
+    },
+    "4d_exit_risk": {
+      "severity": "中〜高",
+      "detail": "30年後は築47年。RC法定耐用年数到達で融資がつきにくく、売却が困難になる可能性",
+      "mitigation": "15-20年での売却を出口戦略の中心に据える"
+    },
+    "4e_natural_disaster_risk": {
+      "severity": "低〜中",
+      "detail": "液状化リスク低。洪水は庄内川系で要確認。地震は南海トラフで6弱-6強想定だが新耐震RC",
+      "mitigation": "地震保険加入必須。1階テナント・入居者への注意喚起"
+    },
+    "4f_jr_johoku_line_dependency": {
+      "severity": "低",
+      "detail": "JR城北線は運行本数少なく廃線リスクもゼロではない。ただし名鉄が主力のため影響限定",
+      "mitigation": "名鉄小牧線を主要アクセスとして募集"
+    }
+  },
+
+  "5_exit_strategy": {
+    "scenario_1_hold_15_years": {
+      "timing": "2040年（築32年）",
+      "rationale": "ローン残高が大幅に減少し、残存耐用年数15年で次の買主も融資を受けやすい",
+      "estimated_exit_price": "7,000〜9,000万円",
+      "estimated_exit_yield": "7.5〜9.0%",
+      "total_cf_received": "約600〜900万円",
+      "equity_from_loan_repayment": "約5,500万円",
+      "net_profit_estimate": "約2,000〜3,000万円",
+      "assessment": "★★★★☆ 最もバランスの良い出口"
+    },
+    "scenario_2_hold_10_years": {
+      "timing": "2035年（築27年）",
+      "rationale": "残存耐用年数20年で売却しやすい。大規模修繕からまだ10年で建物価値も残る",
+      "estimated_exit_price": "8,000〜10,000万円",
+      "estimated_exit_yield": "7.0〜8.5%",
+      "assessment": "★★★★★ ローン残高との兼ね合いで売却益は限定的だが、損失リスクは最小"
+    },
+    "scenario_3_hold_30_years": {
+      "timing": "2055年（築47年）",
+      "rationale": "ローン完済後5年間のCF最大化。ただし建物は法定耐用年数到達",
+      "estimated_exit_price": "4,000〜6,000万円（ほぼ土地値）",
+      "assessment": "★★★☆☆ 総CFは最大だが、建替え・解体コストのリスクあり"
+    },
+    "scenario_4_land_repurpose": {
+      "description": "築47年時点で解体し、土地を売却 or 新築建替え",
+      "land_value_estimate": "412.21㎡ × 15〜20万円 = 6,183〜8,244万円",
+      "demolition_cost_estimate": "1,500〜2,000万円",
+      "net_land_value": "4,183〜6,244万円",
+      "assessment": "★★☆☆☆ 解体費用が重く、資金効率は悪い"
+    },
+    "recommended_exit": "10〜15年保有後に売却が最適。大規模修繕済の恩恵を最大限享受しつつ、建物の残存価値があるうちに出口を確保"
+  },
+
+  "6_comprehensive_evaluation": {
+    "scoring_10point": {
+      "立地・交通利便性": {
+        "score": 6.5,
+        "comment": "2路線利用可能だがJR城北線は本数少。名古屋都心へ30-40分は及第点"
+      },
+      "建物品質・状態": {
+        "score": 8.5,
+        "comment": "築17年RC修繕済は優秀。新耐震基準、法定残存30年"
+      },
+      "収益性（利回り）": {
+        "score": 6.0,
+        "comment": "表面6.8%は名古屋圏RC物件として平均的。実質利回り4.5%弱はやや物足りない"
+      },
+      "キャッシュフロー": {
+        "score": 5.0,
+        "comment": "DSCR 1.09は薄い。金利上昇で赤字転落リスクあり。頭金増額で改善可能"
+      },
+      "将来性・エリアポテンシャル": {
+        "score": 5.5,
+        "comment": "人口減少局面。再開発の恩恵は味美エリアには限定的"
+      },
+      "リスク耐性": {
+        "score": 7.0,
+        "comment": "修繕済・低液状化・新耐震RCでリスク耐性は高い。1DK単身特化も安定"
+      },
+      "出口戦略の柔軟性": {
+        "score": 6.5,
+        "comment": "残存耐用年数30年で当面は融資可能。10-15年保有売却が現実的"
+      },
+      "価格の割安感": {
+        "score": 7.0,
+        "comment": "1.15億は修繕済RC12戸として妥当〜やや割安。名古屋市内比で大幅に安い"
+      },
+      "設備・付加価値": {
+        "score": 7.5,
+        "comment": "防犯カメラ・宅配BOX・駐車場7台は1DK物件として充実。入居者ニーズに合致"
+      },
+      "total_score": 6.6,
+      "total_out_of": 10,
+      "grade": "B+（投資検討に値するが、CF改善策が必要）"
+    },
+
+    "final_verdict": {
+      "recommendation": "条件付き買い（Conditional Buy）",
+      "key_conditions": [
+        "① 頭金を30%（3,450万円）以上に増額しDSCR 1.2以上を確保",
+        "② 固定金利（or 10年固定）での融資を確保",
+        "③ 現地調査で洪水ハザードマップの浸水深を確認（1階浸水リスク評価）",
+        "④ レントロール詳細確認（現行賃料が相場対比で高すぎないか）",
+        "⑤ 大規模修繕の具体的な実施内容・費用を売主から入手",
+        "⑥ 駐車場収入が利回りに含まれているか確認（含まれていなければ+0.3-0.5%上乗せ）"
+      ],
+      "ideal_purchase_price": "1億〜1億800万円（指値交渉で利回り7.3%以上を狙う）",
+      "who_should_buy": [
+        "名古屋圏の不動産投資初〜中級者",
+        "大規模修繕リスクを避けたい安定志向の投資家",
+        "10-15年保有でインカム＋売却益を狙う中期投資家",
+        "自己資金3,000万円以上を用意できる方"
+      ],
+      "who_should_avoid": [
+        "高利回り（8%以上）を求めるアグレッシブ投資家",
+        "自己資金2,000万円以下の方（CF赤字リスク）",
+        "30年超の超長期保有を前提とする方",
+        "名古屋市内のキャピタルゲインを重視する方"
+      ]
+    },
+
+    "summary_one_paragraph": "春日井市味美白山町の本物件は、2023-24年大規模修繕済のRC4階建12戸で、購入直後の修繕リスクがない点が最大の魅力。利回り6.8%は名古屋圏RC物件として平均的だが、築17年で残存耐用年数30年という「ちょうどいい築年」であり、融資の通りやすさと建物の安心感を兼ね備える。一方で、春日井市は人口減少局面に入り、味美エリアへの再開発波及は限定的。CFは薄く金利上昇に脆弱なため、頭金増額と固定金利確保が成功の鍵。10-15年保有で売却する出口戦略が最適で、適切な条件を整えれば年率4-5%のトータルリターンが期待できる堅実な投資対象である。"
+  },
+
+  "data_sources": [
+    "エイブル (able.co.jp) - 春日井市1DK賃貸相場",
+    "CHINTAI (chintai.net) - 家賃相場データ",
+    "LIFULL HOME'S (homes.co.jp) - 一棟マンション売却事例",
+    "春日井市公式 (city.kasugai.lg.jp) - 人口統計・都市計画・ハザードマップ",
+    "街グラフ (machi-graph.com) - 人口推移データ",
+    "国土交通省ハザードマップポータル (disaportal.gsi.go.jp)",
+    "春日井市都市計画マスタープラン2020-2029",
+    "アットホーム (athome.co.jp) - 売却相場",
+    "マンションレビュー (mansion-review.jp) - 価格動向"
+  ],
+
+  "disclaimer": "本レポートは公開情報に基づく分析であり、投資助言ではありません。不動産投資には価格変動リスク、金利リスク、空室リスク、流動性リスク、自然災害リスク等が伴います。投資判断は必ず現地調査・専門家への相談の上、自己責任で行ってください。"
+}
