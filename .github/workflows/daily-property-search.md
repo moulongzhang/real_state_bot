@@ -19,6 +19,7 @@ tools:
 
 network:
   allowed:
+    - defaults
     - "*.rakumachi.jp"
     - "*.kenbiya.com"
     - "*.nomu.com"
@@ -77,10 +78,10 @@ safe-outputs:
    - 千葉: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=12`
 
 2. **健美家**（投資物件大手）
-   - 東京: `https://www.kenbiya.com/pp0/s/tokyo/mansion/`
-   - 神奈川: `https://www.kenbiya.com/pp0/s/kanagawa/mansion/`
-   - 埼玉: `https://www.kenbiya.com/pp0/s/saitama/mansion/`
-   - 千葉: `https://www.kenbiya.com/pp0/s/chiba/mansion/`
+   - 東京: `https://www.kenbiya.com/pp0/s/tokyo/`
+   - 神奈川: `https://www.kenbiya.com/pp0/s/kanagawa/`
+   - 埼玉: `https://www.kenbiya.com/pp0/s/saitama/`
+   - 千葉: `https://www.kenbiya.com/pp0/s/chiba/`
 
 ### 優先度中（可能な限り検索）
 
@@ -95,6 +96,7 @@ safe-outputs:
 1. **前回の検索結果を確認**: `cache-memory` から前回レポートした物件URLリストを読み込む（ファイル名: `seen-properties.json`）。キャッシュファイルのタイムスタンプはハイフン区切り（例: `2026-04-01-08-00-00`）を使用し、コロンは使用しないこと。
 
 2. **各サイトをweb-fetchで検索**: 上記URLを順番にfetchし、掲載されているRC一棟マンションの情報を取得する。楽待・健美家の検索結果ページはJavaScript動的レンダリングのため、取得できる範囲で情報を収集する。個別物件ページ（`/show.html`等）はfetch可能。
+   - **楽待が403を返す場合**: 楽待はBot対策（WAF/Cloudflare等）により検索一覧ページが403になることがあります。その場合は楽待をスキップし、他のサイトの検索を優先してください。無駄なリトライは行わないこと。
 
 3. **条件フィルタリング**: 取得した物件情報を検索条件でフィルタリング。**データが不明な場合は除外せず、条件合致の可能性ありとして残す**。
 
