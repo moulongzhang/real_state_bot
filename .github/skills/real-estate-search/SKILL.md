@@ -24,25 +24,10 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 
 ## 検索サイトURL一覧
 
-### 物件検索サイト
-
-| サイト名 | 検索ページURL | 用途 |
-|----------|-------------|------|
-| **楽待** | https://www.rakumachi.jp/syuuekibukken/city | 投資物件検索（地域別） |
-| **楽待**（沿線） | https://www.rakumachi.jp/syuuekibukken/line | 投資物件検索（沿線別） |
-| **楽待**（新着） | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?newly=1 | 新着物件（24時間以内） |
-| **楽待**（値下げ） | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?price_down=1 | 値下げ物件 |
-| **健美家**（首都圏） | https://www.kenbiya.com/pp0/s/ | 首都圏の収益物件 |
-| **健美家**（関西） | https://www.kenbiya.com/pp0/k/ | 関西の収益物件 |
-| **健美家**（九州） | https://www.kenbiya.com/pp0/f/ | 九州・沖縄の収益物件 |
-| **健美家**（東海） | https://www.kenbiya.com/pp0/t/ | 東海の収益物件 |
-| **健美家**（利回り15%↑） | https://www.kenbiya.com/pp0/r1=15/ | 高利回り物件 |
-| **健美家**（値下げ） | https://www.kenbiya.com/pp0/prd=y/ | 値下げ物件 |
-| **健美家**（新着24h） | https://www.kenbiya.com/pp0/cd2=1/ | 新着物件（24時間以内） |
-| **SUUMO**（売買） | https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/ | 中古マンション（エリア変更可） |
-| **HOMES 投資** | https://toushi.homes.co.jp/ | 投資用物件検索 |
-| **at home** | https://www.athome.co.jp/mansion/chuko/ | 中古マンション |
-| **ノムコム・プロ** | https://www.nomu.com/pro/ | 高額投資物件 |
+> **📖 サイトURL一覧は `real-estate-site-directory` スキルを参照してください。**
+> 物件検索サイト・市場データサイト・競売サイト・ニュースサイトの全URLはそちらに集約されています。
+>
+> 以下は検索で特に頻繁に使うRC一棟マンション特化URLのみ記載します。
 
 ### RC一棟マンション特化 検索URL
 
@@ -59,70 +44,9 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 | **健美家**（千葉・一棟マンション） | https://www.kenbiya.com/pp0/s/chiba/mansion/ | 千葉県・一棟マンション |
 | **健美家**（埼玉・一棟マンション） | https://www.kenbiya.com/pp0/s/saitama/mansion/ | 埼玉県・一棟マンション |
 
-### エリア別検索URL（楽待）
+### 市場データ・相場検索
 
-| エリア | URL |
-|--------|-----|
-| 北海道 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=1 |
-| 宮城県 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=4 |
-| 埼玉県 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=11 |
-| 千葉県 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=12 |
-| 東京都 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13 |
-| 神奈川県 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=14 |
-| 愛知県 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=23 |
-| 京都府 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=26 |
-| 大阪府 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=27 |
-| 兵庫県 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=28 |
-| 広島県 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=34 |
-| 福岡県 | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=40 |
-
-### エリア別検索URL（健美家）
-
-| エリア | URL |
-|--------|-----|
-| 東京都 | https://www.kenbiya.com/pp0/s/tokyo/ |
-| 神奈川県 | https://www.kenbiya.com/pp0/s/kanagawa/ |
-| 埼玉県 | https://www.kenbiya.com/pp0/s/saitama/ |
-| 千葉県 | https://www.kenbiya.com/pp0/s/chiba/ |
-| 大阪府 | https://www.kenbiya.com/pp0/k/osaka/ |
-| 京都府 | https://www.kenbiya.com/pp0/k/kyoto/ |
-| 兵庫県 | https://www.kenbiya.com/pp0/k/hyogo/ |
-| 愛知県 | https://www.kenbiya.com/pp0/t/aichi/ |
-| 福岡県 | https://www.kenbiya.com/pp0/f/fukuoka/ |
-| 北海道 | https://www.kenbiya.com/pp0/h/hokkaido/ |
-| 広島県 | https://www.kenbiya.com/pp0/o/hiroshima/ |
-| 宮城県 | https://www.kenbiya.com/pp0/m/miyagi/ |
-
-### 市場データ・相場検索サイト
-
-| サイト名 | URL | 用途 |
-|----------|-----|------|
-| **REINS** | http://www.contract.reins.or.jp/ | 成約価格データ |
-| **土地総合情報システム** | https://www.land.mlit.go.jp/webland/ | 実取引価格・地価公示 |
-| **土地総合情報（取引価格検索）** | https://www.land.mlit.go.jp/webland/servlet/MainServlet | 取引価格情報検索 |
-| **マンションレビュー** | https://www.mansion-review.jp/ | AI適正価格・坪単価推移 |
-| **東京カンテイ** | https://www.kantei.ne.jp/ | 市区町村別相場 |
-| **HOMES 見える賃貸経営** | https://toushi.homes.co.jp/owner/ | 空室率・賃料相場 |
-| **全国地価マップ** | https://www.chikamap.jp/ | 路線価・固定資産税評価額 |
-| **ハザードマップポータル** | https://disaportal.gsi.go.jp/ | 災害リスク情報 |
-| **ハザードマップ（重ねる）** | https://disaportal.gsi.go.jp/maps/ | 地図上でリスク確認 |
-| **楽待 賃貸経営マップ** | https://www.rakumachi.jp/property/land_price/map | 路線価・空室率・利回り地図 |
-
-### 競売・公売検索サイト
-
-| サイト名 | URL | 用途 |
-|----------|-----|------|
-| **BIT** | https://www.bit.courts.go.jp/ | 裁判所競売物件 |
-| **981.jp** | https://981.jp/ | 競売物件・落札結果 |
-| **KSI官公庁オークション** | https://kankocho.jp/ | 公売物件 |
-
-### ニュース・コラム検索
-
-| サイト名 | URL | 用途 |
-|----------|-----|------|
-| **楽待新聞** | https://www.rakumachi.jp/news/ | 不動産投資ニュース |
-| **健美家ニュース** | https://www.kenbiya.com/ar/ns/ | 市場動向・地域情報 |
-| **健美家コラム** | https://www.kenbiya.com/ar/cl/ | 投資家コラム |
+> **📖 市場データサイト・競売サイト・ニュースサイトのURLは `real-estate-site-directory` スキルを参照。**
 
 ---
 
