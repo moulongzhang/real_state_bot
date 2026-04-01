@@ -40,6 +40,10 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 | **三菱UFJ不動産販売** | https://www.sumai1.com/buyers/investor/tod_13/bukshu_2/?kozo%5B%5D=4 | 東京・RC造・一棟マンション（銀行系で独自物件あり） |
 | **三菱UFJ不動産販売**（神奈川RC） | https://www.sumai1.com/buyers/investor/tod_14/bukshu_2/?kozo%5B%5D=4 | 神奈川・RC造・一棟マンション |
 | **東急リバブル**（東京・RC・2億以下） | https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/ | 東京都全域・RC・1.8億以下 |
+| **HOMES投資**（東京・RC・一棟） | https://toushi.homes.co.jp/bukkensearch/addr11=13&tbg%5B%5D=3&cond_housekouzou%5B%5D=3/ | 東京都・RC造・一棟マンション（50件/ページ） |
+| **HOMES投資**（神奈川・RC・一棟） | https://toushi.homes.co.jp/bukkensearch/addr11=14&tbg%5B%5D=3&cond_housekouzou%5B%5D=3/ | 神奈川県・RC造・一棟マンション |
+| **HOMES投資**（埼玉・RC・一棟） | https://toushi.homes.co.jp/bukkensearch/addr11=11&tbg%5B%5D=3&cond_housekouzou%5B%5D=3/ | 埼玉県・RC造・一棟マンション |
+| **HOMES投資**（千葉・RC・一棟） | https://toushi.homes.co.jp/bukkensearch/addr11=12&tbg%5B%5D=3&cond_housekouzou%5B%5D=3/ | 千葉県・RC造・一棟マンション |
 | **フットワーク**（RC一覧） | https://footwork-i.jp/db/rc.html | RC造の収益物件一覧（東京・神奈川・千葉・埼玉） |
 | **一棟投資.com**（23区） | https://ittou-toushi.com/search/m_ichiran_01.html | 東京23区の一棟物件（会員登録で非公開物件閲覧可） |
 | **住友不動産ステップ**（23区・RC） | https://www.stepon.co.jp/pro/area_13/list_13_100/cs_32_04/ | 東京23区・RC造の収益物件 |
@@ -190,6 +194,15 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 4. 【東急リバブル】RC一棟・2億以下（東京16件+神奈川14件）
    web_fetch: https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/
    web_fetch: https://www.livable.co.jp/fudosan-toushi/tatemono-kanagawa-select-area/a14000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/
+
+4b.【HOMES投資】RC一棟 エリア別（50件/エリア × 4エリア = 最大200件）
+   bash: curl "https://toushi.homes.co.jp/bukkensearch/addr11={都道府県コード}&tbg%5B%5D=3&cond_housekouzou%5B%5D=3/"
+        → grep '/bukkendetail/index/[0-9]*/' | sort -u
+   → 東京: addr11=13 / 神奈川: addr11=14 / 埼玉: addr11=11 / 千葉: addr11=12
+   → エリア+構造(RC)フィルタはサーバーサイドで有効 ✅
+   → 価格・利回りフィルタはJS処理のため無効 → 個別ページで確認
+   → ページネーション不可（50件固定）。個別ページ(/bukkendetail/index/{ID}/)は取得可能
+   → 楽待・健美家と掲載元が一部重複するが、HOMES独自掲載物件もあり
 
 5. Step 1-2のJSON結果から条件合致物件を確認し、必要に応じてweb_fetchで詳細取得
    ✅ RC造
