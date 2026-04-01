@@ -22,7 +22,7 @@
 #
 # 首都圏のRC一棟マンションを毎日自動検索し、投資条件に合致する物件をGitHub Issueで報告するワークフロー
 #
-# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"3012c86f905df6d5c81f99b96466ce3a49a2489a4b46c98949a01a8651ce8ad9","compiler_version":"v0.61.1","strict":true}
+# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"dea59930797871616f57c38310ab3cecb34053c15d51f5218b397cc6bb668440","compiler_version":"v0.61.1","strict":true}
 
 name: "🏠 日次不動産物件検索"
 "on":

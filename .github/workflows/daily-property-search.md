@@ -77,6 +77,11 @@ network:
     # TODO: Self-Hosted Runner を導入すれば非データセンターIPで楽待にアクセス可能。
     #   案A: SHRジョブで楽待だけ取得→artifact経由で本体エージェントに渡す
     #   案B: エージェント全体をSHRで実行（AWF/Docker要件あり）
+    #   実装案: Azure CLI でエフェメラルVM を都度起動する構成も可能
+    #     Job1(GH-hosted): az vm create + ランナー登録(--ephemeral)
+    #     Job2(self-hosted): 楽待取得→artifact保存
+    #     Job3(GH-hosted): az vm delete
+    #   注意: Azure VM もデータセンターIPのため同様に403の可能性あり。自宅マシンが最も確実。
 
 safe-outputs:
   create-issue:
