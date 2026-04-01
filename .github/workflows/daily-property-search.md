@@ -56,7 +56,6 @@ mcp-scripts:
 network:
   allowed:
     - defaults
-    - "*.rakumachi.jp"
     - "*.kenbiya.com"
     - "*.nomu.com"
     - "*.livable.co.jp"
@@ -74,6 +73,7 @@ network:
     - "*.kantei.ne.jp"
     - "*.bit.courts.go.jp"
     - "981.jp"
+    # *.rakumachi.jp は GHA IP が一律403ブロックされるため除外
 
 safe-outputs:
   create-issue:
@@ -107,25 +107,24 @@ safe-outputs:
 
 ### 優先度高（必ず検索）
 
-1. **楽待** — 個別物件ページ（`/show.html`）はfetch可能だが、**検索結果一覧ページはJS動的レンダリング+ボット対策で403になることが多い**。一覧ページが403の場合はスキップし、他のサイトの検索結果から楽待の個別物件URLを発見した場合にfetchする。
-   - 東京RC一棟: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=13`
-   - 神奈川RC一棟: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=14`
-   - 埼玉RC一棟: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=11`
-   - 千葉RC一棟: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=12`
-
-2. **健美家**（投資物件大手）— 一棟マンションカテゴリで検索
+1. **健美家**（投資物件大手）— 一棟マンションカテゴリで検索
    - 東京: `https://www.kenbiya.com/pp0/s/tokyo/`
    - 神奈川: `https://www.kenbiya.com/pp0/s/kanagawa/`
    - 埼玉: `https://www.kenbiya.com/pp0/s/saitama/`
    - 千葉: `https://www.kenbiya.com/pp0/s/chiba/`
 
-### 優先度中（可能な限り検索 — これらは403が少なく確実にfetchできるサイト）
+2. **フットワーク（RC一覧）**: `https://footwork-i.jp/db/rc.html` ← **最も確実にfetch可能。優先的に検索すること**
+3. **東急リバブル**: `https://www.livable.co.jp/fudosan-toushi/`
 
-3. **フットワーク（RC一覧）**: `https://footwork-i.jp/db/rc.html` ← **最も確実にfetch可能。優先的に検索すること**
+### 優先度中（可能な限り検索）
+
 4. **住友不動産ステップ（23区RC）**: `https://www.stepon.co.jp/pro/area_13/list_13_100/cs_32_04/`
 5. **HOMES投資**: `https://toushi.homes.co.jp/`
 6. **ノムコム・プロ**: `https://www.nomu.com/pro/`
-7. **東急リバブル**: `https://www.livable.co.jp/fudosan-toushi/`
+
+### 対象外（GHA環境からアクセス不可）
+
+- **楽待** — GHAデータセンターIPがボット対策で一律403ブロックされるため、このワークフローでは検索対象外とする。楽待の検索はローカル環境のCopilot CLIで別途実行すること。
 
 ## 検索手順
 
@@ -136,8 +135,6 @@ safe-outputs:
    ```
    https://footwork-i.jp/db/rc.html,https://www.kenbiya.com/pp0/s/tokyo/,https://www.kenbiya.com/pp0/s/kanagawa/,https://www.kenbiya.com/pp0/s/saitama/,https://www.kenbiya.com/pp0/s/chiba/,https://toushi.homes.co.jp/,https://www.stepon.co.jp/pro/area_13/list_13_100/cs_32_04/,https://www.nomu.com/pro/,https://www.livable.co.jp/fudosan-toushi/
    ```
-
-   楽待はBot対策で403になるため、一括取得には含めません。
 
 3. **条件フィルタリング**: batch-fetchの結果から物件情報を抽出し、検索条件でフィルタリング。403/404のサイトはスキップ。**データが不明な場合は除外せず、条件合致の可能性ありとして残す**。
 
@@ -202,7 +199,8 @@ GitHub Issueを以下のフォーマットで作成してください:
 
 ## 重要な注意事項
 
-- **403/404エラーはスキップ**: 楽待など一部サイトはボット対策で403を返す。エラーが出たサイトはスキップし、アクセスできたサイトの結果だけでレポートを作成する。**エラーで止まらない**こと。
+- **楽待は対象外**: 楽待はGHAデータセンターIPを一律403ブロックしている（検証済み: curl/Python/Node.js全て403）。楽待の検索はローカルCopilot CLIで別途実行すること。
+- **403/404エラーはスキップ**: 健美家など一部サイトもボット対策で403を返す場合がある。エラーが出たサイトはスキップし、アクセスできたサイトの結果だけでレポートを作成する。**エラーで止まらない**こと。
 - **batch-fetch優先**: 一覧ページは必ず `batch-fetch` で一括並列取得すること。`web-fetch` は個別物件の詳細取得（上位5件）にのみ使用する。
 - **時間管理**: 全体で15分以内に完了すること。一括取得で大半の時間を節約できる。
 - **データ不明時は除外しない**: 築年数・価格・利回りなどが取得できない物件は、条件外とは断定せず「要確認」として残す
