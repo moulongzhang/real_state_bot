@@ -6,6 +6,8 @@ on:
   schedule: daily
   workflow_dispatch:
 
+timeout-minutes: 30
+
 permissions:
   contents: read
   issues: read
@@ -70,25 +72,25 @@ safe-outputs:
 
 ### 優先度高（必ず検索）
 
-1. **楽待**（投資物件最大手）
-   - 東京: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=13`
-   - 神奈川: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=14`
-   - 埼玉: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=11`
-   - 千葉: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=12`
+1. **楽待** — 個別物件ページ（`/show.html`）はfetch可能だが、**検索結果一覧ページはJS動的レンダリング+ボット対策で403になることが多い**。一覧ページが403の場合はスキップし、他のサイトの検索結果から楽待の個別物件URLを発見した場合にfetchする。
+   - 東京RC一棟: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=13`
+   - 神奈川RC一棟: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=14`
+   - 埼玉RC一棟: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=11`
+   - 千葉RC一棟: `https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=12`
 
-2. **健美家**（投資物件大手）
-   - 東京: `https://www.kenbiya.com/pp0/s/tokyo/mansion/`
-   - 神奈川: `https://www.kenbiya.com/pp0/s/kanagawa/mansion/`
-   - 埼玉: `https://www.kenbiya.com/pp0/s/saitama/mansion/`
-   - 千葉: `https://www.kenbiya.com/pp0/s/chiba/mansion/`
+2. **健美家**（投資物件大手）— 一棟マンションカテゴリで検索
+   - 東京: `https://www.kenbiya.com/pp0/s/tokyo/`
+   - 神奈川: `https://www.kenbiya.com/pp0/s/kanagawa/`
+   - 埼玉: `https://www.kenbiya.com/pp0/s/saitama/`
+   - 千葉: `https://www.kenbiya.com/pp0/s/chiba/`
 
-### 優先度中（可能な限り検索）
+### 優先度中（可能な限り検索 — これらは403が少なく確実にfetchできるサイト）
 
-3. **東急リバブル**: `https://www.livable.co.jp/fudosan-toushi/`
-4. **フットワーク**: `https://footwork-i.jp/db/rc.html`
-5. **ノムコム・プロ**: `https://www.nomu.com/pro/`
-6. **HOMES投資**: `https://toushi.homes.co.jp/`
-7. **住友不動産ステップ**: `https://www.stepon.co.jp/pro/`
+3. **フットワーク（RC一覧）**: `https://footwork-i.jp/db/rc.html` ← **最も確実にfetch可能。優先的に検索すること**
+4. **住友不動産ステップ（23区RC）**: `https://www.stepon.co.jp/pro/area_13/list_13_100/cs_32_04/`
+5. **HOMES投資**: `https://toushi.homes.co.jp/`
+6. **ノムコム・プロ**: `https://www.nomu.com/pro/`
+7. **東急リバブル**: `https://www.livable.co.jp/fudosan-toushi/`
 
 ## 検索手順
 
@@ -159,8 +161,10 @@ GitHub Issueを以下のフォーマットで作成してください:
 
 ## 重要な注意事項
 
+- **403/404エラーはスキップ**: 楽待など一部サイトはボット対策で403を返す。エラーが出たサイトはスキップし、アクセスできたサイトの結果だけでレポートを作成する。**エラーで止まらない**こと。
+- **時間管理**: 全体で25分以内に完了すること。1サイトの処理に5分以上かかる場合は次のサイトに進む。
+- **フットワーク優先**: `footwork-i.jp/db/rc.html` は最も確実にfetchできるため、**最初に検索すること**。個別物件ページも確実にfetch可能。
 - **データ不明時は除外しない**: 築年数・価格・利回りなどが取得できない物件は、条件外とは断定せず「要確認」として残す
 - **URLは必ず添付**: すべての物件情報にソースURLを添付する
 - **重複チェック**: cache-memoryで前回のURLリストと照合し、新着/既知を判定する
-- **エラーハンドリング**: サイトがアクセス不可の場合はスキップし、アクセスできたサイトの結果だけでレポートを作成する
 - **条件合致0件でもレポート作成**: 合致物件がなくても検索サマリーと「条件に近い物件」をレポートする

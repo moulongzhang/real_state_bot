@@ -22,7 +22,7 @@
 #
 # 首都圏のRC一棟マンションを毎日自動検索し、投資条件に合致する物件をGitHub Issueで報告するワークフロー
 #
-# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"7230dcffa222ac6a48d7c2bf1b7ac51409ed6fe024ea9a238e6cca46550b3d03","compiler_version":"v0.61.1","strict":true}
+# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"f20e1423dac947fc76c3e5f2e8f26c2dd2e6aa7708300d3828c513af0118bc35","compiler_version":"v0.61.1","strict":true}
 
 name: "🏠 日次不動産物件検索"
 "on":
@@ -567,7 +567,7 @@ jobs:
       - name: Execute GitHub Copilot CLI
         id: agentic_execution
         # Copilot CLI tool arguments (sorted):
-        timeout-minutes: 20
+        timeout-minutes: 30
         run: |
           set -o pipefail
           touch /tmp/gh-aw/agent-step-summary.md
@@ -939,7 +939,7 @@ jobs:
           GH_AW_LOCKDOWN_CHECK_FAILED: ${{ needs.activation.outputs.lockdown_check_failed }}
           GH_AW_GROUP_REPORTS: "false"
           GH_AW_FAILURE_REPORT_AS_ISSUE: "true"
-          GH_AW_TIMEOUT_MINUTES: "20"
+          GH_AW_TIMEOUT_MINUTES: "30"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
