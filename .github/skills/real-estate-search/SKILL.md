@@ -311,6 +311,55 @@ python3 scripts/kenbiya_scan.py > kenbiya_results.json 2>kenbiya_scan.log
 - **GHA環境では楽待は全面403** → ローカルCLIまたはSelf-Hosted Runnerで実行
 - **健美家はGHA環境でも取得可能**（AWFドメイン許可設定が必要）
 
+### HOMES投資（toushi.homes.co.jp）のスキャン方法
+
+HOMES投資は物件検索の一覧ページに**物件URL・価格・利回りが静的HTMLで含まれる**。ただしページネーションは不可（50件固定）。
+
+```bash
+# 東京 RC造 一棟マンション（50件取得）
+curl -s -L -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
+  "https://toushi.homes.co.jp/bukkensearch/addr11=13&tbg%5B%5D=3&cond_housekouzou%5B%5D=3/" | \
+  grep -o '/bukkendetail/index/[0-9]*/' | sort -u
+
+# 神奈川: addr11=14 / 埼玉: addr11=11 / 千葉: addr11=12
+```
+
+**HOMES投資の検索URLパラメータ:**
+
+| パラメータ | 説明 | 値 | サーバー側有効 |
+|-----------|------|-----|-------------|
+| `addr11` | 都道府県コード | 13=東京, 14=神奈川, 11=埼玉, 12=千葉 | ✅ 有効 |
+| `tbg[]` | 物件種別 | **3=一棟マンション**, 2=一棟アパート, 4=一棟ビル | ✅ 有効 |
+| `cond_housekouzou[]` | 構造 | **3=RC造**, 4=SRC造, 2=鉄骨造, 1=木造 | ✅ 有効 |
+| `mcity[]` | 市区町村コード | 1301=23区, etc. | ✅ 有効 |
+| `cond_pricefrom` | 価格下限（万円） | 5000 | ❌ JS処理 |
+| `cond_priceto` | 価格上限（万円） | 18000 | ❌ JS処理 |
+| `cond_rimawari_from` | 利回り下限（%） | 5.5 | ❌ JS処理 |
+| `offset` | ページ送り | 50, 100... | ❌ 無効 |
+
+> ⚠️ **制限事項**: 価格・利回りフィルタとページネーション（offset）はJS処理のためcurlでは無効。エリア+物件種別+構造のみサーバーサイドで絞り込みが効く。各エリア50件固定。
+
+**HTMLソースからの概要データ抽出:**
+
+一覧ページのHTMLには物件URLだけでなく、価格・利回り・エリアの概要テキストも含まれる。
+
+```bash
+# 一覧ページから概要データを抽出
+curl -s -L -A "Mozilla/5.0 ..." \
+  "https://toushi.homes.co.jp/bukkensearch/addr11=13&tbg%5B%5D=3&cond_housekouzou%5B%5D=3/" | \
+  python3 -c "
+import sys, re
+html = sys.stdin.read()
+for m in re.finditer(r'.{0,50}万円.{0,50}', html):
+    text = re.sub(r'<[^>]+>', ' ', m.group()).strip()
+    text = re.sub(r'\s+', ' ', text)
+    if len(text) > 10 and '万円' in text:
+        print(text[:120])
+"
+```
+
+**個別物件ページ**: `https://toushi.homes.co.jp/bukkendetail/index/{ID}/` — web_fetchで取得可能。価格・利回り・築年・構造・間取り・所在地の詳細データあり。
+
 ---
 
 ## 出力フォーマット
