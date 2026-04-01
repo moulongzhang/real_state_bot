@@ -246,20 +246,24 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 投資家プロフィールに基づく条件で効率的に物件を絞り込むフローです。
 
 ```
-1. 【楽待】curlで物件URL一括抽出（4エリア×50件/ページ）
+1. 【楽待】curlで物件URL一括抽出（4エリア合計5,126件、50件/ページ）
    bash: curl → grep 'href="/syuuekibukken/.*show.*"' → sort -u
-   → 東京(area=13) / 神奈川(area=14) / 千葉(area=12) / 埼玉(area=11)
+   → 東京(area=13, 57p) / 神奈川(area=14, 21p) / 千葉(area=12, 13p) / 埼玉(area=11, 13p)
    → RC一棟: dim[]=1001&kouzou[]=3  (+SRC: &kouzou[]=1)
-   → ページ送り: &page=2, &page=3 ...
+   → ページ送り: &page=2, &page=3 ...（重複なし確認済み）
 
-2. 【健美家】curlでpp3（一棟マンション）リンク抽出
-   bash: curl → grep 'href="/pp3/s/.*re_.*"'
-   → 東京/神奈川/埼玉/千葉の4エリア
+2. 【健美家】pp3専用ページからcurlで一棟MSリンク抽出（4エリア合計5,025件、50件/ページ）
+   bash: curl /pp3/s/{都道府県}/ → grep 'href="/pp3/s/.*re_.*"'
+   → 東京(/pp3/s/tokyo/, 55p) / 神奈川(21p) / 埼玉(14p) / 千葉(12p)
+   → ページ送り: /n-2/, /n-3/ ...
+   ⚠️ 旧URL pp0/s/tokyo/ は全種別混在でpp3が8件のみ → 必ずpp3/s/tokyo/を使うこと
 
-3. 【フットワーク】RC一覧を直接取得
-   web_fetch: https://footwork-i.jp/db/rc.html
+3. 【フットワーク】RC一覧（全116件 = rc.html + rc2.html + rc3.html）
+   web_fetch: https://footwork-i.jp/db/rc.html（52件）
+   web_fetch: https://footwork-i.jp/db/rc2.html（40件）
+   web_fetch: https://footwork-i.jp/db/rc3.html（24件）
 
-4. 【東急リバブル】RC一棟・2億以下を直接取得
+4. 【東急リバブル】RC一棟・2億以下（16件、1ページ完結）
    web_fetch: https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/
 
 5. Step 1-2で取得した物件URLから10〜20件をweb_fetchで個別取得し一次スクリーニング
@@ -307,18 +311,26 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 **Step 1: curlで検索ページのHTMLから物件URLを一括抽出**
 
 ```bash
-# 東京RC一棟（1ページ50件、ページネーション可）
+# 東京RC一棟（1ページ50件、ページネーション &page=N）
 curl -s -L -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
-  "https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=13" | \
+  "https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=13&page=1" | \
   grep -o 'href="/syuuekibukken/[^"]*show[^"]*"' | sort -u
 
-# ページネーション: &page=2, &page=3 ... を追加
 # 神奈川: area=14 / 埼玉: area=11 / 千葉: area=12
+# SRC造も含める場合: &kouzou%5B%5D=1 を追加
 ```
 
-- 1ページあたり50件（ユニーク物件URL）
-- `&page=N` でページ送り可能
-- SRC造も含める場合: `&kouzou%5B%5D=1` を追加
+- 1ページ50件、ページ間の重複なし（確認済み）
+- 最終ページ超過（例: 東京はpage=58以降）で全件ダンプされるので注意
+- **各エリアの掲載件数・ページ数（2026年4月1日時点）:**
+
+| エリア | area= | 全掲載件数 | ページ数 | 最終ページ件数 |
+|--------|-------|----------|---------|-------------|
+| 東京都 | 13 | **2,830件** | 57 | 30件 |
+| 神奈川県 | 14 | **1,015件** | 21 | 15件 |
+| 埼玉県 | 11 | **642件** | 13 | 42件 |
+| 千葉県 | 12 | **639件** | 13 | 39件 |
+| **4エリア合計** | | **5,126件** | | |
 
 **Step 2: 個別物件ページをweb_fetchで取得**
 
@@ -338,24 +350,32 @@ web_fetch: https://www.rakumachi.jp/syuuekibukken/kanto/tokyo/dim1001/{物件ID}
 
 ### 健美家（kenbiya.com）の網羅的検索手順
 
-**Step 1: curlで検索ページのHTMLからpp3（一棟マンション）リンクを抽出**
+**Step 1: curlで `pp3/s/{都道府県}/` ページから一棟マンションリンクを抽出**
+
+> ⚠️ 重要: 以前使っていた `pp0/s/tokyo/` は全種別混在で一棟MSが8件しか含まれない。**必ず `pp3/s/tokyo/` を使うこと**（一棟マンション専用、全件網羅）。
 
 ```bash
-# 東京の一棟マンション(pp3)
+# 東京の一棟マンション（50件/ページ）
 curl -s -L -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
-  "https://www.kenbiya.com/pp0/s/tokyo/" | \
-  grep -o 'href="/pp3/s/[^"]*re_[^"]*"'
+  "https://www.kenbiya.com/pp3/s/tokyo/" | \
+  grep -o 'href="/pp3/s/tokyo/[^"]*re_[^"]*"' | sort -u
 
-# 神奈川
-curl -s -L -A "..." "https://www.kenbiya.com/pp0/s/kanagawa/" | grep -o 'href="/pp3/s/[^"]*re_[^"]*"'
-# 埼玉
-curl -s -L -A "..." "https://www.kenbiya.com/pp0/s/saitama/" | grep -o 'href="/pp3/s/[^"]*re_[^"]*"'
-# 千葉
-curl -s -L -A "..." "https://www.kenbiya.com/pp0/s/chiba/" | grep -o 'href="/pp3/s/[^"]*re_[^"]*"'
+# ページ2以降: /pp3/s/tokyo/n-2/, /pp3/s/tokyo/n-3/ ...
+curl -s -L -A "..." "https://www.kenbiya.com/pp3/s/tokyo/n-2/" | grep -o 'href="/pp3/s/tokyo/[^"]*re_[^"]*"'
 ```
 
 - `pp3` = 一棟マンション（`pp1`=区分, `pp2`=一棟アパート, `pp5`=一棟ビル）
-- 一部物件は会員限定（pp1リンク先が会社情報ページに転送される）
+- ページネーション: `/n-2/`, `/n-3/` ... `/n-{最終ページ}/`
+- 一部物件は会員限定（リンク先が会社情報ページに転送）
+- **各エリアの掲載件数（2026年4月1日時点）:**
+
+| エリア | 検索URL | 全掲載件数 | ページ数（50件/ページ） |
+|--------|---------|----------|----------------------|
+| 東京都 | `/pp3/s/tokyo/` | **2,736件** | 55 |
+| 神奈川県 | `/pp3/s/kanagawa/` | **1,037件** | 21 |
+| 埼玉県 | `/pp3/s/saitama/` | **684件** | 14 |
+| 千葉県 | `/pp3/s/chiba/` | **568件** | 12 |
+| **4エリア合計** | | **5,025件** | |
 
 **Step 2: 個別物件ページをweb_fetchで取得**
 
@@ -440,5 +460,5 @@ for i, block in enumerate(blocks[1:], 1):
 
 | 日付 | 内容 |
 |------|------|
-| 2026-04-01 | v1.4 — 楽待・健美家のJS動的サイト攻略方法を追加。curl→リンク抽出→web_fetch個別取得の2段階方式。楽待は1ページ50件（ページネーション可）、健美家はpp3リンクで一棟マンション特定。スクリーニングフローを全面改訂 |
+| 2026-04-01 | v1.4 — 楽待・健美家のJS動的サイト攻略方法を追加。curl→リンク抽出→web_fetch個別取得の2段階方式。楽待は4エリア合計5,126件（50件/ページ、ページネーション確認済み、重複なし）、健美家はpp3専用URL(pp0ではなくpp3/s/tokyo/)で4エリア合計5,025件。フットワークはrc.html+rc2.html+rc3.htmlの3ページで全116件。スクリーニングフローを全面改訂 |
 | 2026-04-01 | v1.3 — 教訓追加: config.yamlとスキルの条件不一致により八王子市明神町物件を見落とし。newly_listed設定のリスクを文書化。config.yaml同期の重要性を明記 |
