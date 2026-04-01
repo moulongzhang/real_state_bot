@@ -56,13 +56,11 @@ mcp-scripts:
 network:
   allowed:
     - defaults
-    - "*.kenbiya.com"
     - "*.nomu.com"
     - "*.livable.co.jp"
     - "footwork-i.jp"
-    - "*.homes.co.jp"
-    - "toushi.homes.co.jp"
     - "*.stepon.co.jp"
+    # 以下はエージェントが個別物件詳細を取得する際に必要になる可能性があるため残す
     - "ittou-toushi.com"
     - "*.athome.co.jp"
     - "*.reins.or.jp"
@@ -73,13 +71,16 @@ network:
     - "*.kantei.ne.jp"
     - "*.bit.courts.go.jp"
     - "981.jp"
-    # *.rakumachi.jp は GHA IP が一律403ブロックされるため除外
-    # TODO: Self-Hosted Runner を導入すれば非データセンターIPで楽待にアクセス可能。
-    #   案A: SHRジョブで楽待だけ取得→artifact経由で本体エージェントに渡す
+    # 除外サイト:
+    # *.rakumachi.jp — GHA IP が一律403ブロック（検証済み）
+    # *.kenbiya.com — JS動的レンダリングでfetchからデータ取得不可
+    # *.homes.co.jp / toushi.homes.co.jp — 同上
+    # TODO: Self-Hosted Runner を導入すれば楽待・健美家も取得可能。
+    #   案A: SHRジョブで取得→artifact経由で本体エージェントに渡す
     #   案B: エージェント全体をSHRで実行（AWF/Docker要件あり）
     #   実装案: Azure CLI でエフェメラルVM を都度起動する構成も可能
     #     Job1(GH-hosted): az vm create + ランナー登録(--ephemeral)
-    #     Job2(self-hosted): 楽待取得→artifact保存
+    #     Job2(self-hosted): 楽待・健美家取得→artifact保存
     #     Job3(GH-hosted): az vm delete
     #   注意: Azure VM もデータセンターIPのため同様に403の可能性あり。自宅マシンが最も確実。
 
@@ -113,26 +114,19 @@ safe-outputs:
 
 以下のサイトを**すべて**検索してください。各サイトでRC一棟マンションの掲載物件を確認し、条件に合うものをリストアップします。
 
-### 優先度高（必ず検索）
+### SSR確認済み（確実にデータ取得可能）
 
-1. **健美家**（投資物件大手）— 一棟マンションカテゴリで検索
-   - 東京: `https://www.kenbiya.com/pp0/s/tokyo/`
-   - 神奈川: `https://www.kenbiya.com/pp0/s/kanagawa/`
-   - 埼玉: `https://www.kenbiya.com/pp0/s/saitama/`
-   - 千葉: `https://www.kenbiya.com/pp0/s/chiba/`
+1. **フットワーク（RC一覧）**: `https://footwork-i.jp/db/rc.html` ← **最も確実。最優先で検索**
+2. **東急リバブル（東京RC一棟〜2億）**: `https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/`
+3. **東急リバブル（神奈川RC一棟〜2億）**: `https://www.livable.co.jp/fudosan-toushi/tatemono-kanagawa-select-area/a14000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/`
+4. **ノムコム・プロ（検索結果）**: `https://www.nomu.com/pro/search/` — SSRで物件データ（価格・利回り・所在地・構造・築年月）が取得可能。URLパラメータでのフィルタは効かないため、取得した40件からエージェント側でRC一棟マンションを抽出すること。
+5. **住友不動産ステップ（23区RC）**: `https://www.stepon.co.jp/pro/area_13/list_13_100/cs_32_04/` — ⚠️ **Shift-JIS**: batch-fetchが自動でエンコーディング変換するが、文字化けが残る場合は数値データ（価格・利回り・築年・面積）を優先的に抽出すること。
 
-2. **フットワーク（RC一覧）**: `https://footwork-i.jp/db/rc.html` ← **最も確実にfetch可能。優先的に検索すること**
-3. **東急リバブル**: `https://www.livable.co.jp/fudosan-toushi/`
+### 対象外
 
-### 優先度中（可能な限り検索）
-
-4. **住友不動産ステップ（23区RC）**: `https://www.stepon.co.jp/pro/area_13/list_13_100/cs_32_04/`
-5. **HOMES投資**: `https://toushi.homes.co.jp/`
-6. **ノムコム・プロ**: `https://www.nomu.com/pro/`
-
-### 対象外（GHA環境からアクセス不可）
-
-- **楽待** — GHAデータセンターIPがボット対策で一律403ブロックされるため、このワークフローでは検索対象外とする。楽待の検索はローカル環境のCopilot CLIで別途実行するか、Self-Hosted Runner導入で対応予定。
+- **健美家** — JS動的レンダリングのため、fetchでは検索フィルタUIのみ返り物件データが取得不可。
+- **HOMES投資** — JS動的レンダリングのため、fetchではサイト説明のみ返り物件データが取得不可。
+- **楽待** — GHAデータセンターIPがボット対策で一律403ブロック（検証済み）。楽待の検索はローカル環境のCopilot CLIで別途実行するか、Self-Hosted Runner導入で対応予定。
 
 ## 検索手順
 
@@ -141,7 +135,7 @@ safe-outputs:
 2. **全サイト一覧ページを `batch-fetch` で一括並列取得**: 以下のURLをカンマ区切りで `batch-fetch` ツールに渡し、**1回のtool callで全サイトを同時取得**してください。`web-fetch` で1件ずつ取得しないこと。
 
    ```
-   https://footwork-i.jp/db/rc.html,https://www.kenbiya.com/pp0/s/tokyo/,https://www.kenbiya.com/pp0/s/kanagawa/,https://www.kenbiya.com/pp0/s/saitama/,https://www.kenbiya.com/pp0/s/chiba/,https://toushi.homes.co.jp/,https://www.stepon.co.jp/pro/area_13/list_13_100/cs_32_04/,https://www.nomu.com/pro/,https://www.livable.co.jp/fudosan-toushi/
+   https://footwork-i.jp/db/rc.html,https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/,https://www.livable.co.jp/fudosan-toushi/tatemono-kanagawa-select-area/a14000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/,https://www.nomu.com/pro/search/,https://www.stepon.co.jp/pro/area_13/list_13_100/cs_32_04/
    ```
 
 3. **条件フィルタリング**: batch-fetchの結果から物件情報を抽出し、検索条件でフィルタリング。403/404のサイトはスキップ。**データが不明な場合は除外せず、条件合致の可能性ありとして残す**。
