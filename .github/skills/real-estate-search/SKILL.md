@@ -246,19 +246,23 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 投資家プロフィールに基づく条件で効率的に物件を絞り込むフローです。
 
 ```
-1. 【候補1エリア】楽待でRC一棟マンションを検索
-   → 東京: https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=13
-   → 神奈川: https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=14
+1. 【楽待】curlで物件URL一括抽出（4エリア×50件/ページ）
+   bash: curl → grep 'href="/syuuekibukken/.*show.*"' → sort -u
+   → 東京(area=13) / 神奈川(area=14) / 千葉(area=12) / 埼玉(area=11)
+   → RC一棟: dim[]=1001&kouzou[]=3  (+SRC: &kouzou[]=1)
+   → ページ送り: &page=2, &page=3 ...
 
-2. 【候補2エリア】楽待でRC一棟マンションを検索
-   → 千葉: https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=12
-   → 埼玉: https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=11
+2. 【健美家】curlでpp3（一棟マンション）リンク抽出
+   bash: curl → grep 'href="/pp3/s/.*re_.*"'
+   → 東京/神奈川/埼玉/千葉の4エリア
 
-3. 東急リバブル・フットワークでRC一棟を検索
-   → https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/
-   → https://footwork-i.jp/db/rc.html
+3. 【フットワーク】RC一覧を直接取得
+   web_fetch: https://footwork-i.jp/db/rc.html
 
-4. 一次スクリーニング（以下を全て満たすもの）
+4. 【東急リバブル】RC一棟・2億以下を直接取得
+   web_fetch: https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/
+
+5. Step 1-2で取得した物件URLから10〜20件をweb_fetchで個別取得し一次スクリーニング
    ✅ RC造
    ✅ 価格 5,000万〜1.8億円
    ✅ 表面利回り 5.5%以上
@@ -266,30 +270,122 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
    ✅ 戸数 6戸以上
    ✅ 駅徒歩 10分以内
 
-5. 二次スクリーニング（物件詳細確認）
+6. 二次スクリーニング（物件詳細確認）
    ✅ 築年月が明記されている
    ✅ 満室稼働中 or 高稼働率
    ✅ 所有権（借地権でない）
    ✅ 新耐震基準（1981年6月以降の建築確認）
 
-6. 三次スクリーニング（投資分析）
+7. 三次スクリーニング（投資分析）
    → CFシミュレーション（頭金10%、金利2%、35年）
    → 1年目CFがプラスになるか確認
    → 純資産プラス転換が15年以内か確認
    → ハザードマップで災害リスク確認
 ```
 
-### 🚨 前回調査の教訓（2026年3月31日）
+### 🚨 前回調査の教訓（2026年3月31日〜4月1日）
 
-1. **楽待の検索ページはJS動的レンダリング**のため、web_fetchでは物件一覧を取得できない。個別物件ページ（`/show.html`）は取得可能
-2. **表面利回り4.5%以下のRC一棟は頭金10%ではCFマイナス**になる（金利2%想定）。5.5%以上を目標に
-3. **RC一棟・築25年以内・2億以下は市場で最も競争が激しい条件帯**。流通数は極めて少なく、条件緩和の検討も必要
-4. **東急リバブル・フットワーク**は楽待・健美家に掲載されていない物件が見つかることがある。複数ポータル横断検索が重要
-5. **3戸以下の一棟物件**は空室リスクが集中し、投資初心者には不向き
-6. **築年不明の物件**は登記簿確認が最優先。購入検討前に必ず確認すること
-7. **config.yamlとスキルの条件不一致が物件見落としの原因に（2026年4月1日）**: 八王子市明神町のRC一棟マンション（築19年・1.4億・利回り5.82%）が3/31の自動スキャンで見落とされた。原因は `config.yaml` の `max_building_age_years: 15` がスキルの推奨条件（築3〜25年）と不一致だったため。**config.yamlとスキルの検索条件は常に同期させること**
-8. **`newly_listed: true`は物件見落としリスクあり**: 新着24時間以内のみの検索では、掲載済みの物件を見逃す。`newly_listed: false`に変更し、全掲載物件を対象とするべき
-9. **自動スクリプト（daily_search.py）の検索条件はconfig.yamlで管理**: スキルの推奨条件を変更した場合は、必ず `scripts/config.yaml` も同時に更新すること
+1. **表面利回り4.5%以下のRC一棟は頭金10%ではCFマイナス**になる（金利2%想定）。5.5%以上を目標に
+2. **RC一棟・築25年以内・2億以下は市場で最も競争が激しい条件帯**。流通数は極めて少なく、条件緩和の検討も必要
+3. **東急リバブル・フットワーク**は楽待・健美家に掲載されていない物件が見つかることがある。複数ポータル横断検索が重要
+4. **3戸以下の一棟物件**は空室リスクが集中し、投資初心者には不向き
+5. **築年不明の物件**は登記簿確認が最優先。購入検討前に必ず確認すること
+6. **config.yamlとスキルの条件不一致が物件見落としの原因に（2026年4月1日）**: 八王子市明神町のRC一棟マンション（築19年・1.4億・利回り5.82%）が3/31の自動スキャンで見落とされた。原因は `config.yaml` の `max_building_age_years: 15` がスキルの推奨条件（築3〜25年）と不一致だったため。**config.yamlとスキルの検索条件は常に同期させること**
+7. **`newly_listed: true`は物件見落としリスクあり**: 新着24時間以内のみの検索では、掲載済みの物件を見逃す。`newly_listed: false`に変更し、全掲載物件を対象とするべき
+8. **自動スクリプト（daily_search.py）の検索条件はconfig.yamlで管理**: スキルの推奨条件を変更した場合は、必ず `scripts/config.yaml` も同時に更新すること
+
+---
+
+## 🔧 JS動的サイトの攻略方法（楽待・健美家）
+
+### ⚠️ 重要: `web_fetch`ではなく`curl`→リンク抽出→`web_fetch`の2段階方式を使うこと
+
+楽待・健美家の**検索一覧ページ**は物件リストをJavaScriptで動的レンダリングしている。`web_fetch`（Markdown変換）では物件データが消失するが、**HTMLソースには物件URLが埋め込まれている**。`curl`（bashツール）で生HTMLを取得し、物件URLを抽出した後、個別ページを`web_fetch`で取得する。
+
+### 楽待（rakumachi.jp）の網羅的検索手順
+
+**Step 1: curlで検索ページのHTMLから物件URLを一括抽出**
+
+```bash
+# 東京RC一棟（1ページ50件、ページネーション可）
+curl -s -L -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
+  "https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=13" | \
+  grep -o 'href="/syuuekibukken/[^"]*show[^"]*"' | sort -u
+
+# ページネーション: &page=2, &page=3 ... を追加
+# 神奈川: area=14 / 埼玉: area=11 / 千葉: area=12
+```
+
+- 1ページあたり50件（ユニーク物件URL）
+- `&page=N` でページ送り可能
+- SRC造も含める場合: `&kouzou%5B%5D=1` を追加
+
+**Step 2: 個別物件ページをweb_fetchで取得**
+
+```
+web_fetch: https://www.rakumachi.jp/syuuekibukken/kanto/tokyo/dim1001/{物件ID}/show.html
+```
+
+- 個別ページには価格・利回り・築年月・構造・戸数・間取り・所在地・駅距離が全て含まれる
+- 「条件が近い物件」「この不動産会社の他の物件」セクションから追加候補も発見可能
+
+**Step 3: 効率的なスクリーニング（全件web_fetchは非効率なので）**
+
+1. Step 1で全URL（例: 東京50件 + 神奈川50件 = 100件）を取得
+2. 10〜15件をランダムまたは最新順にweb_fetchし、条件適合をチェック
+3. 「条件が近い物件」リンクから芋づる式に候補を広げる
+4. 全件の価格・利回り一覧が必要な場合はHTMLソースからも抽出可能（prop_blockデータ）
+
+### 健美家（kenbiya.com）の網羅的検索手順
+
+**Step 1: curlで検索ページのHTMLからpp3（一棟マンション）リンクを抽出**
+
+```bash
+# 東京の一棟マンション(pp3)
+curl -s -L -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
+  "https://www.kenbiya.com/pp0/s/tokyo/" | \
+  grep -o 'href="/pp3/s/[^"]*re_[^"]*"'
+
+# 神奈川
+curl -s -L -A "..." "https://www.kenbiya.com/pp0/s/kanagawa/" | grep -o 'href="/pp3/s/[^"]*re_[^"]*"'
+# 埼玉
+curl -s -L -A "..." "https://www.kenbiya.com/pp0/s/saitama/" | grep -o 'href="/pp3/s/[^"]*re_[^"]*"'
+# 千葉
+curl -s -L -A "..." "https://www.kenbiya.com/pp0/s/chiba/" | grep -o 'href="/pp3/s/[^"]*re_[^"]*"'
+```
+
+- `pp3` = 一棟マンション（`pp1`=区分, `pp2`=一棟アパート, `pp5`=一棟ビル）
+- 一部物件は会員限定（pp1リンク先が会社情報ページに転送される）
+
+**Step 2: 個別物件ページをweb_fetchで取得**
+
+```
+web_fetch: https://www.kenbiya.com/pp3/s/{都道府県}/{市区町村}/re_{物件ID}/
+```
+
+- 物件詳細（価格・利回り・築年月・構造・戸数・間取り・所在地・接道・用途地域）が取得可能
+- 一部は `pp1` URLだが物件詳細が表示される場合もある
+
+**Step 3: prop_blockからの簡易データ抽出（オプション）**
+
+```bash
+# HTMLソースからprop_block内の概要データ（エリア・価格・利回り・種別）を抽出
+curl -s -L -A "..." "https://www.kenbiya.com/pp0/s/tokyo/" | \
+  python3 -c "
+import sys, re
+html = sys.stdin.read()
+blocks = html.split('prop_block')
+for i, block in enumerate(blocks[1:], 1):
+    text = re.sub(r'<[^>]+>', '|', block[:500])
+    text = re.sub(r'\|+', '|', text).strip()
+    print(f'Block {i}: {text[:200]}')
+"
+```
+
+### GHA環境（日次ワークフロー）での注意
+
+- **楽待はGHAデータセンターIPから403ブロック**される（2026年4月確認済み）。GHA環境ではフットワーク・リバブル・ノムコム・ステップの4サイトを使用し、楽待はローカルCLI実行時のみ対象とする。
+- 健美家は上記curl手順で取得可能（GHA環境でも動作するがAWF設定でドメイン許可が必要）
 
 ---
 
@@ -335,7 +431,7 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 1. **URL必須**: 全ての検索結果・データ引用には必ずURLを添付する。URLがない情報は提示しない
 2. **日付記載**: データの取得日を明記する（「2026年3月30日時点」など）
 3. **複数ソース**: 可能な限り2つ以上のサイトから情報を取得し、クロスチェックする
-4. **スクレイピング制限**: 楽待・健美家等のJS動的サイトは物件一覧をスクレイピングできない場合がある。その場合は検索ページURLを提示し、ユーザーに直接確認を促す
+4. **JS動的サイト対策**: 楽待・健美家の検索一覧は`web_fetch`ではなく`curl`（bashツール）でHTML取得→物件URL抽出→`web_fetch`で個別ページ取得の2段階方式を使う。上記「JS動的サイトの攻略方法」セクションを参照
 5. **鮮度**: 物件情報は掲載から数時間〜数日で売れることがある。「○月○日時点の情報」と明記する
 
 ---
@@ -344,4 +440,5 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 
 | 日付 | 内容 |
 |------|------|
+| 2026-04-01 | v1.4 — 楽待・健美家のJS動的サイト攻略方法を追加。curl→リンク抽出→web_fetch個別取得の2段階方式。楽待は1ページ50件（ページネーション可）、健美家はpp3リンクで一棟マンション特定。スクリーニングフローを全面改訂 |
 | 2026-04-01 | v1.3 — 教訓追加: config.yamlとスキルの条件不一致により八王子市明神町物件を見落とし。newly_listed設定のリスクを文書化。config.yaml同期の重要性を明記 |
