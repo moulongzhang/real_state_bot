@@ -74,6 +74,9 @@ network:
     - "*.bit.courts.go.jp"
     - "981.jp"
     # *.rakumachi.jp は GHA IP が一律403ブロックされるため除外
+    # TODO: Self-Hosted Runner を導入すれば非データセンターIPで楽待にアクセス可能。
+    #   案A: SHRジョブで楽待だけ取得→artifact経由で本体エージェントに渡す
+    #   案B: エージェント全体をSHRで実行（AWF/Docker要件あり）
 
 safe-outputs:
   create-issue:
@@ -124,7 +127,7 @@ safe-outputs:
 
 ### 対象外（GHA環境からアクセス不可）
 
-- **楽待** — GHAデータセンターIPがボット対策で一律403ブロックされるため、このワークフローでは検索対象外とする。楽待の検索はローカル環境のCopilot CLIで別途実行すること。
+- **楽待** — GHAデータセンターIPがボット対策で一律403ブロックされるため、このワークフローでは検索対象外とする。楽待の検索はローカル環境のCopilot CLIで別途実行するか、Self-Hosted Runner導入で対応予定。
 
 ## 検索手順
 
