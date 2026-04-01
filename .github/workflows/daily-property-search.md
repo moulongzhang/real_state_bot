@@ -19,6 +19,40 @@ tools:
   github:
     toolsets: [default]
 
+mcp-scripts:
+  batch-fetch:
+    description: "複数URLを並列fetchし結果をまとめて返す。一覧ページの一括取得に使用。"
+    inputs:
+      urls:
+        type: string
+        required: true
+        description: "カンマ区切りのURL一覧"
+      max_chars:
+        type: number
+        default: 5000
+        description: "各URLから取得する最大文字数"
+    timeout: 120
+    script: |
+      const urlList = urls.split(',').map(u => u.trim()).filter(u => u.length > 0);
+      const limit = max_chars || 5000;
+      const start = Date.now();
+      const results = await Promise.all(
+        urlList.map(async (url) => {
+          const t0 = Date.now();
+          try {
+            const res = await fetch(url, {
+              headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PropertyBot/1.0)' },
+              signal: AbortSignal.timeout(15000)
+            });
+            const text = await res.text();
+            return { url, status: res.status, chars: text.length, content: text.slice(0, limit), time_ms: Date.now() - t0 };
+          } catch (e) {
+            return { url, error: e.message, time_ms: Date.now() - t0 };
+          }
+        })
+      );
+      return { total_urls: urlList.length, total_time_ms: Date.now() - start, results };
+
 network:
   allowed:
     - defaults
@@ -97,14 +131,19 @@ safe-outputs:
 
 1. **前回の検索結果を確認**: `cache-memory` から前回レポートした物件URLリストを読み込む（ファイル名: `seen-properties.json`）。キャッシュファイルのタイムスタンプはハイフン区切り（例: `2026-04-01-08-00-00`）を使用し、コロンは使用しないこと。
 
-2. **各サイトをweb-fetchで検索**: 上記URLを順番にfetchし、掲載されているRC一棟マンションの情報を取得する。楽待・健美家の検索結果ページはJavaScript動的レンダリングのため、取得できる範囲で情報を収集する。個別物件ページ（`/show.html`等）はfetch可能。
-   - **楽待が403を返す場合**: 楽待はBot対策（WAF/Cloudflare等）により検索一覧ページが403になることがあります。その場合は楽待をスキップし、他のサイトの検索を優先してください。無駄なリトライは行わないこと。
+2. **全サイト一覧ページを `batch-fetch` で一括並列取得**: 以下のURLをカンマ区切りで `batch-fetch` ツールに渡し、**1回のtool callで全サイトを同時取得**してください。`web-fetch` で1件ずつ取得しないこと。
 
-3. **条件フィルタリング**: 取得した物件情報を検索条件でフィルタリング。**データが不明な場合は除外せず、条件合致の可能性ありとして残す**。
+   ```
+   https://footwork-i.jp/db/rc.html,https://www.kenbiya.com/pp0/s/tokyo/,https://www.kenbiya.com/pp0/s/kanagawa/,https://www.kenbiya.com/pp0/s/saitama/,https://www.kenbiya.com/pp0/s/chiba/,https://toushi.homes.co.jp/,https://www.stepon.co.jp/pro/area_13/list_13_100/cs_32_04/,https://www.nomu.com/pro/,https://www.livable.co.jp/fudosan-toushi/
+   ```
+
+   楽待はBot対策で403になるため、一括取得には含めません。
+
+3. **条件フィルタリング**: batch-fetchの結果から物件情報を抽出し、検索条件でフィルタリング。403/404のサイトはスキップ。**データが不明な場合は除外せず、条件合致の可能性ありとして残す**。
 
 4. **新着判定**: 前回のseen-properties.jsonに含まれていないURLの物件を「新着」として特定する。
 
-5. **物件詳細の取得**: 条件に合致しそうな物件は、個別ページをweb-fetchして詳細情報（価格・利回り・築年・構造・戸数・駅距離）を確認する。
+5. **物件詳細の取得（上位5件まで）**: 条件に合致しそうな物件のうち、**上位5件のみ** `web-fetch` で個別ページを取得して詳細確認する。全件fetchしない。
 
 6. **cache-memoryを更新**: 今回確認した全物件のURLリストを `seen-properties.json` に保存する。
 
@@ -164,8 +203,8 @@ GitHub Issueを以下のフォーマットで作成してください:
 ## 重要な注意事項
 
 - **403/404エラーはスキップ**: 楽待など一部サイトはボット対策で403を返す。エラーが出たサイトはスキップし、アクセスできたサイトの結果だけでレポートを作成する。**エラーで止まらない**こと。
-- **時間管理**: 全体で25分以内に完了すること。1サイトの処理に5分以上かかる場合は次のサイトに進む。
-- **フットワーク優先**: `footwork-i.jp/db/rc.html` は最も確実にfetchできるため、**最初に検索すること**。個別物件ページも確実にfetch可能。
+- **batch-fetch優先**: 一覧ページは必ず `batch-fetch` で一括並列取得すること。`web-fetch` は個別物件の詳細取得（上位5件）にのみ使用する。
+- **時間管理**: 全体で15分以内に完了すること。一括取得で大半の時間を節約できる。
 - **データ不明時は除外しない**: 築年数・価格・利回りなどが取得できない物件は、条件外とは断定せず「要確認」として残す
 - **URLは必ず添付**: すべての物件情報にソースURLを添付する
 - **重複チェック**: cache-memoryで前回のURLリストと照合し、新着/既知を判定する
