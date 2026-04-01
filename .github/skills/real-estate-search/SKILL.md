@@ -172,32 +172,26 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 投資家プロフィールに基づく条件で効率的に物件を絞り込むフローです。
 
 ```
-1. 【楽待】curlで物件URL一括抽出（4エリア合計5,126件、50件/ページ）
-   bash: curl → grep 'href="/syuuekibukken/.*show.*"' → sort -u
-   → 東京(area=13, 57p) / 神奈川(area=14, 21p) / 千葉(area=12, 13p) / 埼玉(area=11, 13p)
-   → RC一棟: dim[]=1001&kouzou[]=3  (+SRC: &kouzou[]=1)
-   → ページ送り: &page=2, &page=3 ...（重複なし確認済み）
+1. 【楽待】Pythonスクリプトで一括スキャン（約20秒）
+   bash: python3 scripts/rakumachi_scan.py > rakumachi.json 2>rakumachi.log
+   → サーバーフィルタで5,204件→900件→RC確認済み14件合致
+   → 出力JSONに価格・利回り・築年・構造・戸数・URLが含まれる
 
-2. 【健美家】pp3 + URLフィルタで条件適合物件を直接抽出（4エリア合計18件 ← 5,025件から絞込）
-   bash: curl /pp3/s/{都道府県}/koz=3/r1=5.5/rc2=25/s1=6/w2=10/ → grep pp3リンク
-   → 東京(14件) / 神奈川(1件) / 埼玉(0件) / 千葉(3件)
-   → 価格フィルタはURL6条件制限で省略 → 個別ページで価格確認
-   → フィルタなしの全件取得も可能: /pp3/s/tokyo/ (50件/ページ, /n-2/, /n-3/...)
+2. 【健美家】Pythonスクリプトで一括スキャン（約10秒）
+   bash: python3 scripts/kenbiya_scan.py > kenbiya.json 2>kenbiya.log
+   → サーバーフィルタで5,025件→18件→価格フィルタ後2件
+   → 個別ページを自動取得してパース済み
 
-3. 【フットワーク】RC一覧（全116件 = rc.html + rc2.html + rc3.html）
-   web_fetch: https://footwork-i.jp/db/rc.html（52件）
-   web_fetch: https://footwork-i.jp/db/rc2.html（40件）
-   web_fetch: https://footwork-i.jp/db/rc3.html（24件）
+3. 【フットワーク】RC一覧（全52件 = rc.html + rc2.html + rc3.html）
+   web_fetch: https://footwork-i.jp/db/rc.html
+   web_fetch: https://footwork-i.jp/db/rc2.html
+   web_fetch: https://footwork-i.jp/db/rc3.html
 
-4. 【東急リバブル】RC一棟・2億以下（16件、1ページ完結）
+4. 【東急リバブル】RC一棟・2億以下（東京16件+神奈川14件）
    web_fetch: https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/
+   web_fetch: https://www.livable.co.jp/fudosan-toushi/tatemono-kanagawa-select-area/a14000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/
 
-5. 【三菱UFJ不動産販売】RC一棟（東京26件+神奈川5件+埼玉5件+千葉3件=39件）
-   web_fetch: https://www.sumai1.com/buyers/investor/tod_13/bukshu_2/?kozo%5B%5D=4
-   → 神奈川: tod_14 / 埼玉: tod_11 / 千葉: tod_12
-   → 静的HTMLに価格・利回り含む。銀行系で楽待・健美家未掲載の独自物件あり
-
-5. Step 1-2で取得した物件URLから10〜20件をweb_fetchで個別取得し一次スクリーニング
+5. Step 1-2のJSON結果から条件合致物件を確認し、必要に応じてweb_fetchで詳細取得
    ✅ RC造
    ✅ 価格 5,000万〜1.8億円
    ✅ 表面利回り 5.5%以上
@@ -263,17 +257,19 @@ python3 scripts/rakumachi_scan.py > results.json 2>scan.log
 | `houses_ge` | 最低戸数 | `6` |
 | `page` | ページ番号 | `1`, `2`, ... |
 
-#### 健美家スキャン
-
-健美家もURLパスにフィルタパラメータを付加してサーバー側絞り込みが可能。
+#### 健美家スキャン（`scripts/kenbiya_scan.py`）
 
 ```bash
-# 東京RC一棟: RC造/利回り5.5%+/築25年以内/6戸+/徒歩10分
-curl -s -L -A "Mozilla/5.0 ..." \
-  "https://www.kenbiya.com/pp3/s/tokyo/koz=3/r1=5.5/rc2=25/s1=6/w2=10/"
+# 実行（約10秒で完了）
+python3 scripts/kenbiya_scan.py > kenbiya_results.json 2>kenbiya_scan.log
 ```
 
-**健美家フィルタパラメータ一覧:**
+- URLパスフィルタで**サーバー側絞り込み**: 5,025件 → 18件
+- 個別物件ページをurllib+BeautifulSoupでパース
+- 価格フィルタはクライアント側で適用（サーバーフィルタ6個制限のため）
+- 出力: JSON（候補物件の価格・利回り・築年・構造・戸数・URL）
+
+**健美家フィルタパラメータ一覧（URLパスに付加）:**
 
 | パラメータ | 説明 | 値の例 |
 |-----------|------|--------|
