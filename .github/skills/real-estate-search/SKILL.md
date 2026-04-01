@@ -37,6 +37,8 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 | **楽待**（神奈川・RC・一棟） | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=14 | 神奈川県・1棟マンション・RC造 |
 | **楽待**（埼玉・RC・一棟） | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=11 | 埼玉県・1棟マンション・RC造 |
 | **楽待**（千葉・RC・一棟） | https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&kouzou%5B%5D=3&area=12 | 千葉県・1棟マンション・RC造 |
+| **三菱UFJ不動産販売** | https://www.sumai1.com/buyers/investor/tod_13/bukshu_2/?kozo%5B%5D=4 | 東京・RC造・一棟マンション（銀行系で独自物件あり） |
+| **三菱UFJ不動産販売**（神奈川RC） | https://www.sumai1.com/buyers/investor/tod_14/bukshu_2/?kozo%5B%5D=4 | 神奈川・RC造・一棟マンション |
 | **東急リバブル**（東京・RC・2億以下） | https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/ | 東京都全域・RC・1.8億以下 |
 | **フットワーク**（RC一覧） | https://footwork-i.jp/db/rc.html | RC造の収益物件一覧（東京・神奈川・千葉・埼玉） |
 | **一棟投資.com**（23区） | https://ittou-toushi.com/search/m_ichiran_01.html | 東京23区の一棟物件（会員登録で非公開物件閲覧可） |
@@ -189,6 +191,11 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?area=13
 
 4. 【東急リバブル】RC一棟・2億以下（16件、1ページ完結）
    web_fetch: https://www.livable.co.jp/fudosan-toushi/tatemono-tokyo-select-area/a13000/conditions-use=mansion-itto&price-to=20000&construction=rc-framed-house/
+
+5. 【三菱UFJ不動産販売】RC一棟（東京26件+神奈川5件+埼玉5件+千葉3件=39件）
+   web_fetch: https://www.sumai1.com/buyers/investor/tod_13/bukshu_2/?kozo%5B%5D=4
+   → 神奈川: tod_14 / 埼玉: tod_11 / 千葉: tod_12
+   → 静的HTMLに価格・利回り含む。銀行系で楽待・健美家未掲載の独自物件あり
 
 5. Step 1-2で取得した物件URLから10〜20件をweb_fetchで個別取得し一次スクリーニング
    ✅ RC造
