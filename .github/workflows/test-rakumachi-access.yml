@@ -102,6 +102,97 @@ jobs:
           })();
           "
 
+      - name: Test 5 - curl without User-Agent
+        run: |
+          echo "=== curl without UA ==="
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --globoff \
+            "https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim[]=1001&kouzou[]=3&area=13")
+          echo "HTTP Status: $STATUS"
+
+      - name: Test 6 - curl with Python-like headers
+        run: |
+          echo "=== curl mimicking Python urllib ==="
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --globoff \
+            -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            -H "Accept: */*" \
+            -H "Accept-Encoding: identity" \
+            -H "Connection: close" \
+            "https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim[]=1001&kouzou[]=3&area=13")
+          echo "HTTP Status: $STATUS"
+
+      - name: Test 7 - curl forcing HTTP/1.1 (Python default)
+        run: |
+          echo "=== curl with --http1.1 ==="
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --globoff --http1.1 \
+            -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            "https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim[]=1001&kouzou[]=3&area=13")
+          echo "HTTP Status: $STATUS"
+
+      - name: Test 8 - curl with Accept-Language + Referer (browser-like)
+        run: |
+          echo "=== curl with full browser headers ==="
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --globoff \
+            -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" \
+            -H "Accept-Language: ja,en-US;q=0.9,en;q=0.8" \
+            -H "Referer: https://www.rakumachi.jp/" \
+            "https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim[]=1001&kouzou[]=3&area=13")
+          echo "HTTP Status: $STATUS"
+
+      - name: Test 9 - Node.js fetch with HTTP/1.1 via undici
+        run: |
+          echo "=== Node.js with explicit HTTP/1.1 ==="
+          node -e "
+          const https = require('https');
+          const url = 'https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim[]=1001&kouzou[]=3&area=13';
+          const options = {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            }
+          };
+          https.get(url, options, (res) => {
+            let data = '';
+            res.on('data', chunk => data += chunk);
+            res.on('end', () => {
+              console.log('HTTP Status:', res.statusCode);
+              console.log('Response size:', data.length, 'bytes');
+              const count = (data.match(/propertyBlock__name/g) || []).length;
+              console.log('Property cards:', count);
+              if (res.statusCode === 200 && count > 0) console.log('✅ Success');
+              else console.log('❌ Failed');
+            });
+          }).on('error', e => console.log('❌ Error:', e.message));
+          "
+
+      - name: Test 10 - Python with verbose request info
+        run: |
+          echo "=== Python urllib detailed ==="
+          python3 -c "
+          import urllib.request, ssl, http.client
+          http.client.HTTPConnection.debuglevel = 1
+          url = 'https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim[]=1001&kouzou[]=3&area=13'
+          req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+          })
+          try:
+            resp = urllib.request.urlopen(req, timeout=15)
+            print(f'HTTP Status: {resp.status}')
+            print(f'HTTP Version: {resp.version}')
+            print(f'Response headers:')
+            for k, v in resp.headers.items():
+              print(f'  {k}: {v}')
+          except Exception as e:
+            print(f'❌ Error: {e}')
+          " 2>&1 | head -40
+
+      - name: Test 11 - curl verbose TLS info
+        run: |
+          echo "=== curl TLS fingerprint info ==="
+          curl -sv --globoff -o /dev/null \
+            -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            "https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim[]=1001&kouzou[]=3&area=13" \
+            2>&1 | grep -E '(SSL|TLS|HTTP/|< HTTP|ALPN|cipher|protocol)' | head -20
+
       - name: Summary
         if: always()
         run: |
