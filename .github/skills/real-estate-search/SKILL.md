@@ -395,3 +395,4 @@ for i, block in enumerate(blocks[1:], 1):
 | 2026-04-01 | v1.3 — 教訓追加: config.yamlとスキルの条件不一致により八王子市明神町物件を見落とし。newly_listed設定のリスクを文書化。config.yaml同期の重要性を明記 |
 | 2026-04-01 | v1.5 — フルスキャン実施結果: 楽待5,204件(104ページ全件)→一次フィルタ226件→RC確認済み102件。健美家5,025件URL取得(pp3/102ページ全件)。フットワーク52件(3ページ全件)。リバブル30件。個別ページ(show.html)はcurl/urllibで403、web_fetch(Copilot組み込み)なら取得可能。一覧ページはurllibで取得可能。楽待一覧ページのHTMLから価格・利回り・築年月・構造・戸数・駅徒歩分数が抽出可能（全件web_fetchする必要なし） |
 | 2026-04-01 | v1.6 — ⚠️ 重大修正: 楽待一覧ページの価格・利回りデータは信頼不可。PR広告混入と隣接propertyBlockのデータずれにより、物件名とprice/yieldが不一致になるケースが多数確認された（例: 実際3.2億の物件が5400万と表示）。一覧ページからはURLのみ抽出し、条件フィルタは個別ページ(web_fetch)のデータで行うこと。ただし一覧のHTMLには50件分のshow.htmlリンクが含まれるため、URLの一括抽出には有効。|
+| 2026-04-01 | v1.7 — サーバー側フィルタ導入: URLパラメータ(price_from/price_to/gross_from/year_from/year_to/min/houses_ge)で楽待の検索を事前絞り込み。10,000件→900件(18ページ)に削減。BeautifulSoupで各propertyBlockを個別パースしデータずれ解消。scripts/rakumachi_scan.pyとして実装。全6条件合致14件(重複含む)発見。|
